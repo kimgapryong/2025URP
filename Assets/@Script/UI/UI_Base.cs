@@ -9,7 +9,7 @@ public class UI_Base : MonoBehaviour
     private bool isFirst;
     Dictionary<Type, UnityEngine.Object[]> typeDic = new Dictionary<Type, UnityEngine.Object[]>();
 
-    private void Start()
+    private void Awake()
     {
         Init();
     }
@@ -28,10 +28,7 @@ public class UI_Base : MonoBehaviour
     protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
         string[] names = Enum.GetNames(type);
-        foreach(string name in names)
-        {
-            Debug.Log(name);
-        }
+ 
         UnityEngine.Object[] objs = new UnityEngine.Object[names.Length];
 
         for(int i = 0; i < names.Length; i++)

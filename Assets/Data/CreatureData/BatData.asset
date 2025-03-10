@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51d829b3121e7049836b5be70823cb3, type: 3}
-  m_Name: FlashData
+  m_Script: {fileID: 11500000, guid: cbad3305f643a9646ae5869610a4a83d, type: 3}
+  m_Name: BatData
   m_EditorClassIdentifier: 
-  itemName: "\uC190\uC815\uB4F1"
-  damage: 0
-  sprite: {fileID: 21300000, guid: 81f594ac68469784784aa5e0c5f111a9, type: 3}
+  hp: 20
+  speed: 5
+  damage: 10
+  arange: 7
+  atkArange: 0.5

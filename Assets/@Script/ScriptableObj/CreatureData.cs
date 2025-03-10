@@ -8,5 +8,8 @@ public class CreatureData : ScriptableObject
 {
     public float hp;
     public float speed;
+    public float damage;
+    public float arange;
+    public float atkArange;
 
 }

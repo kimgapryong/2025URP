@@ -1,12 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 
 public class FlashLight : ItemBase
 {
     public override void ItemAblity()
     {
-        if(player.dir == Vector3.zero)
+        Debug.Log("플래시 능력");
+        if (isEquer)
+        {
+            isEquer = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            isEquer = true;
+            gameObject.SetActive(true);
+        }
+    }
+
+    public override void UpdateMehod()
+    {
+        if (player.dir == Vector3.zero)
             return;
 
         //외워야 할것

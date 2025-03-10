@@ -32,4 +32,14 @@ public static class Utils
 
         return null;
     }
+
+    public static List<T> FindAllChild<T>(this GameObject obj) where T : Component
+    {
+        List<T> list = new List<T>();
+        foreach(T com in obj.GetComponentsInChildren<T>())
+        {
+            list.Add(com);
+        }
+        return list;
+    }
 }

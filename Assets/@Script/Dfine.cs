@@ -16,4 +16,10 @@ public class Dfine
         Move,
         Attack
     }
+
+    public enum ItemState
+    {
+        Idle,
+        Play,
+    }
 }

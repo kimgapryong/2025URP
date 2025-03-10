@@ -29,6 +29,10 @@ public class InvenCanvas : UI_Base
             //Instantiate(ui_Panel, GetObject((int)Objects.InvenBackground).transform);
         }
 
+        Debug.Log(Manager.Item);
+        Manager.Item.Init();
+        Manager.Item.LoadPlayerItem("LightHandle");
+        Manager.Item.LoadPlayerItem("Sword1");
         return true;
     }
 }

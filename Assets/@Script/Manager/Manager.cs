@@ -13,6 +13,14 @@ public class Manager : MonoBehaviour
     private UIManager _ui = new UIManager();
     public static UIManager Ui { get { return Instance._ui; } }
 
+    private ItemManager _item = new ItemManager();
+    public static ItemManager Item { get { return Instance._item; } }   
+
+    private StageManager _stage = new StageManager();
+    public static StageManager Stage { get { return Instance._stage; } }
+
+    public PlayerController player { get; private set; }
+
     private void Awake()
     {
         Init();
@@ -31,6 +39,15 @@ public class Manager : MonoBehaviour
         }
         _instance = go.GetComponent<Manager>();
         DontDestroyOnLoad(go);
+    }
 
+    public void GetPlayer(PlayerController pa)
+    {
+        if (pa == null)
+        {
+            Debug.LogError("PlayerController가 null입니다!");
+            return;
+        }
+        player = pa;
     }
 }
