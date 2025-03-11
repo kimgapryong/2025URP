@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class SoletClickUI : UI_Base, IPointerClickHandler
 {
-    public ItemBase myItemBase;
+    public ItemBase myItemBase = null;
     public Action<ItemBase> onItemClick;
     enum Images
     {

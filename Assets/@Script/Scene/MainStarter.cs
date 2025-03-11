@@ -46,5 +46,6 @@ public class MainStarter : MonoBehaviour
             camCon.player = Manager.Instance.player;
             DontDestroyOnLoad(mainCam);
         }
+
     }
 }
