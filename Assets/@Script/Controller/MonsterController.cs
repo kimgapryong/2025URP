@@ -25,7 +25,7 @@ public class MonsterController : CreatureContoller
     public override void Moving()
     {
         dir = (player.transform.position -transform.position).normalized;
-        Debug.Log(dir.x + ", " + dir.y);
+        
         transform.position += dir * Speed * Time.deltaTime;
 
         if(Vector3.Distance(transform.position, player.transform.position) <= creatureData.atkArange) 
@@ -33,5 +33,23 @@ public class MonsterController : CreatureContoller
 
         if (Vector3.Distance(transform.position, player.transform.position) >= creatureData.arange)
             state = Dfine.State.Idle;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
+        if (cur != null && !damageCool)
+        {
+            cur.Ondamage(this, Damage);
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
+        if (cur != null && !damageCool)
+        {
+            cur.Ondamage(this, Damage);
+        }
     }
 }

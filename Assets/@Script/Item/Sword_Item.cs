@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Sword_Item : ItemBase
+{
+    public Collider2D coll;
+    public bool isWait;
+    public Coroutine _cor;
+
+
+    public override void Init()
+    {
+        base.Init();
+        coll = GetComponent<Collider2D>();
+        coll.enabled = false;
+    }
+    public override void ItemAblity()
+    {
+        if (!isWait)
+        {
+            if (_cor != null)
+                StopCoroutine(WaitTime());
+
+            _cor = StartCoroutine(WaitTime());
+        }
+    }
+
+    public IEnumerator WaitTime()
+    {
+        isWait = true;
+        coll.enabled = true;
+        State = Dfine.ItemState.Play;
+        yield return new WaitForSeconds(0.4f);
+        coll.enabled = false;
+        State = Dfine.ItemState.Idle;
+
+        yield return new WaitForSeconds(itemData.atkTime);
+        isWait = false;
+    }
+
+    public override void UpdateMehod()
+    {
+        bool isturn = player.GetComponent<SpriteRenderer>().flipX;
+        if (isturn)
+            gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
+        else
+            gameObject.transform.eulerAngles = Vector3.zero;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("플레이어가 공격 중");
+        CreatureContoller cur = collision.gameObject.GetComponent<MonsterController>();
+        if (cur != null)
+        {
+            cur.Ondamage(player, itemData.damage);
+        }
+    }
+
+}

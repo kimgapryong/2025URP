@@ -7,7 +7,7 @@ public class CreatureContoller : BaseContoller
 {
     public ItemBase myCurItem;
     public bool damageCool;
-    public float atkCoolTime = 0.4f;
+    public float atkCoolTime = 1f;
 
     public bool isDie;
 
@@ -75,7 +75,6 @@ public class CreatureContoller : BaseContoller
     {
         if (damageCool)
             return;
-
         damageCool = true;
 
         CurrentHp -= damage;
@@ -96,25 +95,6 @@ public class CreatureContoller : BaseContoller
         yield return new WaitForSeconds(atkCoolTime);
         damageCool = false;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
-        if (cur != null && !damageCool)
-        {
-            cur.Ondamage(this, Damage);
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
-        if (cur != null && !damageCool)
-        {
-            cur.Ondamage(this, Damage);
-        }
-    }
-
 
     //나중에 abstract로 바꾸기
     public virtual void ChangeAnim(Dfine.State state) { }
