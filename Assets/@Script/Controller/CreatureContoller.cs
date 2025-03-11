@@ -54,7 +54,8 @@ public class CreatureContoller : BaseContoller
     public override void UpdateMehod()
     {
         UseItem();
-        GetComponent<SpriteRenderer>().flipX = dir.x < 0 ? true : dir.x > 0 ? false : GetComponent<SpriteRenderer>().flipX;
+       // GetComponent<SpriteRenderer>().flipX = dir.x < 0 ? true : dir.x > 0 ? false : GetComponent<SpriteRenderer>().flipX;
+       transform.eulerAngles = dir.x > 0 ? Vector3.zero : dir.x < 0 ? new Vector3(0,-180,0) : transform.eulerAngles;
 
         switch (state)
         {
@@ -75,9 +76,13 @@ public class CreatureContoller : BaseContoller
     {
         if (damageCool)
             return;
-        damageCool = true;
 
+        damageCool = true;
         CurrentHp -= damage;
+
+        if(attker.GetType() == typeof(PlayerController))
+            transform.Find("HpCanvas").GetComponent<HpCanvas>().ChangeSlider(CurrentHp, Hp);
+
         if (CurrentHp <= 0 && !isDie)
         {
             isDie = true;

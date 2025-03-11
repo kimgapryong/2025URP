@@ -23,6 +23,7 @@ public class Sword_Item : ItemBase
                 StopCoroutine(WaitTime());
 
             _cor = StartCoroutine(WaitTime());
+            Camera.main.GetComponent<CameraController>().StartShake();
         }
     }
 
@@ -39,22 +40,15 @@ public class Sword_Item : ItemBase
         isWait = false;
     }
 
-    public override void UpdateMehod()
-    {
-        bool isturn = player.GetComponent<SpriteRenderer>().flipX;
-        if (isturn)
-            gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
-        else
-            gameObject.transform.eulerAngles = Vector3.zero;
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("플레이어가 공격 중");
         CreatureContoller cur = collision.gameObject.GetComponent<MonsterController>();
         if (cur != null)
         {
             cur.Ondamage(player, itemData.damage);
+            
         }
     }
 

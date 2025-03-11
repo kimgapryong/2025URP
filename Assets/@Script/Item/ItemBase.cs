@@ -8,6 +8,7 @@ public abstract class ItemBase : MonoBehaviour
     public ItemData itemData;
     public PlayerController player;
     public Animator animator;
+
     public bool isEquer { get; set; } = true;
 
     private Dfine.ItemState _state;

@@ -15,7 +15,7 @@ public class ItemManager
     {
 
         GameObject item = Manager.Resources.Load<GameObject>($"Item/PlayerItem/{itemName}");
-        GameObject paItem = Object.Instantiate(item, Manager.Instance.player.transform);
+        GameObject paItem = Object.Instantiate(item, Manager.Instance.player.transform.Find("WeponHole"));
 
         ItemBase itemCom = paItem.GetComponent<ItemBase>();
 

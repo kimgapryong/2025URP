@@ -56,4 +56,8 @@ public class UI_Base : MonoBehaviour
     {
         return Get<GameObject>(key);    
     }
+    protected Slider GetSlider(int key)
+    {
+        return Get<Slider>(key);
+    }
 }

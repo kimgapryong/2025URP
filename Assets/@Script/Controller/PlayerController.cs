@@ -34,8 +34,10 @@ public class PlayerController : CreatureContoller
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            if(myCurItem != null)
+
+            if (myCurItem != null)
                 myCurItem.ItemAblity();
+
         }
     }
     public override void Moving()

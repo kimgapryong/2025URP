@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbad3305f643a9646ae5869610a4a83d, type: 3}
   m_Name: BatData
   m_EditorClassIdentifier: 
-  hp: 20
+  hp: 50
   speed: 5
   damage: 10
   arange: 7
-  atkArange: 0.5
+  atkArange: 0.8
