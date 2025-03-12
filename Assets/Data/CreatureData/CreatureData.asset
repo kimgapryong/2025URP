@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: CreatureData
   m_EditorClassIdentifier: 
   hp: 15
-  speed: 5
+  speed: 10.42
+  damage: 0
+  arange: 0
+  atkArange: 0
