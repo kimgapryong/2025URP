@@ -50,4 +50,6 @@ public class Manager : MonoBehaviour
         }
         player = pa;
     }
+
+
 }

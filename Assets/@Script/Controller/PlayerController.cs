@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : CreatureContoller
 {
+    public Action currentClickAction;
     
     public float atkTime;
     public override bool Init()

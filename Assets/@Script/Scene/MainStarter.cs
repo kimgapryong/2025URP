@@ -6,8 +6,12 @@ using UnityEngine;
 public class MainStarter : MonoBehaviour
 {
     public GameObject player;
+    public GameObject shopChr;
     public GameObject cam;
+    public Transform shoptrans;
+
     private Vector3 startPos = new Vector3(-24f, -7.5f);
+    private Vector3 shopPos = new Vector3(9, 1);
 
     private void Start()
     {
@@ -45,6 +49,14 @@ public class MainStarter : MonoBehaviour
             CameraController camCon = mainCam.GetOrAddComponent<CameraController>();
             camCon.player = Manager.Instance.player;
             DontDestroyOnLoad(mainCam);
+        }
+        //상인 생성
+        GameObject shoper = GameObject.Find("ShopChracter");
+        if(shoper == null)
+        {
+            shoper = Instantiate(shopChr, shoptrans);
+            shoper.name = shopChr.name;
+            shoper.transform.localPosition = shopPos;
         }
 
     }
