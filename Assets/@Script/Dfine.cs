@@ -8,6 +8,7 @@ public class Dfine
     {
         Start,
         Lobby,
+        Stage,
         Clear,
     }
    public enum State

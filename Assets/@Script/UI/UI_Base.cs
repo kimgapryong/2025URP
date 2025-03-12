@@ -8,7 +8,7 @@ public class UI_Base : MonoBehaviour
 {
     private bool isFirst;
     Dictionary<Type, UnityEngine.Object[]> typeDic = new Dictionary<Type, UnityEngine.Object[]>();
-
+    public PlayerController player;
     private void Awake()
     {
         Init();
@@ -19,6 +19,7 @@ public class UI_Base : MonoBehaviour
         if(!isFirst)
         {
             isFirst = true;
+            player = Manager.Instance.player;
             return true;
         }
 

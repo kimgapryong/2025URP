@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d65a66ed598964490c1c2af99c57b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breathSpeed: 1
+  isFrist: 0
   strPos: {x: 0.5, y: -0.1, z: 0}
 --- !u!4 &798560837
 Transform:

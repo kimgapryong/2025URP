@@ -16,7 +16,7 @@ public class HpCanvas : UI_Base
         base.Init();
         Bind<Slider>(typeof(Sliders));
         slider = GetSlider((int)Sliders.Hp_Slider);
-
+        transform.parent.GetComponent<CreatureContoller>().hpAction = ChangeSlider;
         return true;
     }
 
@@ -24,9 +24,6 @@ public class HpCanvas : UI_Base
     {
         
         float sliderValue = Mathf.Max(curHp, 0);
-        Debug.Log(sliderValue / myMaxHp);
-        Debug.Log(myMaxHp);
-        Debug.Log(sliderValue);
         slider.value = sliderValue / myMaxHp;
     }
 }

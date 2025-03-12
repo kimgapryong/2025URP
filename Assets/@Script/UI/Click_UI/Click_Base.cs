@@ -10,13 +10,13 @@ public abstract class Click_Base : UI_Base
         ClickImage,
     }
     Image curImage;
-    public PlayerController player;
+    
     public Transform playerTrans;
 
     public override bool Init()
     {
         base.Init();
-        player = Manager.Instance.player;
+        
         playerTrans = player.transform;
         Bind<Image>(typeof(Images));
         curImage = GetImage((int)Images.ClickImage);

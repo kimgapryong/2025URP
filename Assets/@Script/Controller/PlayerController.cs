@@ -7,15 +7,34 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : CreatureContoller
 {
-    public Action currentClickAction;
-    
+    public Action currentClickAction; //현재 아이템
+    public Action<float, float> breathAction; //플레이어 산소 게이지
+
+    #region 산소 게이지
+    private float _curBreath;
+    public float CurrentBreath
+    {
+        get
+        {
+            return _curBreath;
+        }
+        set
+        {
+            _curBreath = value;
+            breathAction?.Invoke(value, MaxBreath);
+        }
+    }
+
+    public float MaxBreath { get; set; } = 100f;
+    #endregion
+
     public float atkTime;
     public override bool Init()
     {
         base.Init();
 
         state = Dfine.State.Move;
-
+        CurrentBreath = MaxBreath;
         return true;
     }
     public override void UpdateMehod()

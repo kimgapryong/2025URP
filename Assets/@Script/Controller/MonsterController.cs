@@ -88,6 +88,7 @@ public class MonsterController : CreatureContoller
     {
         yield return new WaitForSeconds(0.6f);
         isBack = false;
+        rigid.velocity = Vector3.zero;
         state = Dfine.State.Move;
     }
     /*    private void OnTriggerEnter2D(Collider2D collision)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,6 +6,9 @@ using UnityEngine;
 
 public class CreatureContoller : BaseContoller
 {
+
+    public Action<float, float> hpAction;
+
     public ItemBase myCurItem;
     public bool damageCool;
     public float atkCoolTime = 1f;
@@ -17,7 +21,19 @@ public class CreatureContoller : BaseContoller
     public Animator animator;
 
     #region 캐릭터의 스테이터스
-    public float CurrentHp { get; set; }    
+    private float _cur;
+    public float CurrentHp
+    {
+        get
+        {
+            return _cur;
+        }
+        set
+        {
+            _cur = value;
+            hpAction?.Invoke(value, Hp);
+        }
+    }
     public float Hp {  get; set; }
 
     public float Damage { get; set; }   
@@ -80,8 +96,8 @@ public class CreatureContoller : BaseContoller
         damageCool = true;
         CurrentHp -= damage;
 
-        if(attker.GetType() == typeof(PlayerController))
-            transform.Find("HpCanvas").GetComponent<HpCanvas>().ChangeSlider(CurrentHp, Hp);
+        //if(attker.GetType() == typeof(PlayerController))
+        //    transform.Find("HpCanvas").GetComponent<HpCanvas>().ChangeSlider(CurrentHp, Hp);
 
         if (CurrentHp <= 0 && !isDie)
         {

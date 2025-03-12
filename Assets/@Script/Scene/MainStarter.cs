@@ -10,11 +10,14 @@ public class MainStarter : MonoBehaviour
     public GameObject cam;
     public Transform shoptrans;
 
+
+
     private Vector3 startPos = new Vector3(-24f, -7.5f);
-    private Vector3 shopPos = new Vector3(9, 1);
+    private Vector3 shopPos = new Vector3(9f, 1f);
 
     private void Start()
     {
+        
         InitStart();
     }
 
