@@ -21,6 +21,8 @@ public class InvenCanvas : UI_Base
         Breath_Slider,
     }
 
+    public BackpackCanvas backpack;
+
     public GameObject backObj;
     Slider hpSlider;
     Slider brSlider;
@@ -29,7 +31,7 @@ public class InvenCanvas : UI_Base
     public override bool Init()
     {
         base.Init();
-        
+
         Bind<Image>(typeof(Images));
         Bind<GameObject>(typeof(Objects));
         Bind<Slider>(typeof(Sliders));
@@ -42,13 +44,12 @@ public class InvenCanvas : UI_Base
 
         backObj = GetImage((int)Images.BackImage).gameObject;
 
-        if (gameObject.FindChild<BackpackCanvas>("BackpackCanvas") == null)
-            Instantiate(Manager.Ui.CreateUI<BackpackCanvas>("Backpack_UI/Bg_Back"), transform);
+        ReBack(); // 처음 가방 설정
+        backObj.gameObject.BindingBtn(OpenOrCloseBag);
 
-        for (int  i = 0; i < maxPanelCount; i ++)
+        for (int i = 0; i < maxPanelCount; i++)
         {
             Manager.Ui.soletClickUIs.Add(Manager.Ui.CreateUI<SoletClickUI>("Bg_panel", GetObject((int)Objects.InvenBackground).transform));
-            Debug.Log("생성중");
             //Instantiate(ui_Panel, GetObject((int)Objects.InvenBackground).transform);
         }
 
@@ -75,6 +76,26 @@ public class InvenCanvas : UI_Base
     #endregion
 
     #region 플레이어 가방 관련
+    public void OpenOrCloseBag()
+    {
+        if(backpack.gameObject.activeSelf == true)
+        {
+            backpack.gameObject.SetActive(false);
+        }
+        else
+        {
+            backpack.gameObject.SetActive(true);
+        }
+    }
 
+    public void ReBack()
+    {
+        //매니저에서 관리하는 가방 칸수 초기화
+        Manager.Ui.backpackSolet.Clear();
+
+        if (gameObject.FindChild<BackpackCanvas>("BackpackCanvas") == null)
+            backpack = Instantiate(Manager.Ui.CreateUI<BackpackCanvas>("Backpack_UI/Bg_Back"), transform);
+        backpack.gameObject.SetActive(false);
+    }
     #endregion
 }

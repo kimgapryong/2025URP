@@ -7,6 +7,7 @@ public class Stage : MonoBehaviour
     private const float breathDamage = 3f;
     public float breathSpeed;
     public bool isFrist;
+    public Dfine.StageScene MyStage { get; set; }
     private void Start()
     {
         Init();
@@ -21,7 +22,8 @@ public class Stage : MonoBehaviour
         if (!isFrist)
         {
             isFrist = true;
-            StartCoroutine(PlayerBrath());
+            if(MyStage != Dfine.StageScene.Lobby)
+                StartCoroutine(PlayerBrath());
             return true;
         }
         return false;

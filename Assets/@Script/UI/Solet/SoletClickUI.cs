@@ -15,6 +15,7 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
         SelectBg,
         Sprite,
     }
+
     Image select;
     Image bgSp;
     Image itemSp;

@@ -61,4 +61,8 @@ public class UI_Base : MonoBehaviour
     {
         return Get<Slider>(key);
     }
+    protected Text GetText(int key)
+    {
+        return Get<Text>(key);  
+    }
 }
