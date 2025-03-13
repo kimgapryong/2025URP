@@ -34,7 +34,7 @@ public class UI_Base : MonoBehaviour
 
         for(int i = 0; i < names.Length; i++)
         {
-            objs[i] = Utils.FindChild<T>(gameObject, names[i]);
+            objs[i] = gameObject.FindChild<T>(names[i]);
         }
         typeDic.Add(typeof(T), objs);
     }

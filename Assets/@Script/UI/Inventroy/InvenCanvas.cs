@@ -8,6 +8,8 @@ public class InvenCanvas : UI_Base
     enum Images
     {
         InvenBackground,
+        BackImage,
+        Bg_Back,
     }
     enum Objects
     {
@@ -19,6 +21,7 @@ public class InvenCanvas : UI_Base
         Breath_Slider,
     }
 
+    public GameObject backObj;
     Slider hpSlider;
     Slider brSlider;
 
@@ -37,9 +40,15 @@ public class InvenCanvas : UI_Base
         player.hpAction = Hp_UI;
         player.breathAction = Breath_UI;
 
+        backObj = GetImage((int)Images.BackImage).gameObject;
+
+        if (gameObject.FindChild<BackpackCanvas>("BackpackCanvas") == null)
+            Instantiate(Manager.Ui.CreateUI<BackpackCanvas>("Backpack_UI/Bg_Back"), transform);
+
         for (int  i = 0; i < maxPanelCount; i ++)
         {
             Manager.Ui.soletClickUIs.Add(Manager.Ui.CreateUI<SoletClickUI>("Bg_panel", GetObject((int)Objects.InvenBackground).transform));
+            Debug.Log("»ý¼ºÁß");
             //Instantiate(ui_Panel, GetObject((int)Objects.InvenBackground).transform);
         }
 

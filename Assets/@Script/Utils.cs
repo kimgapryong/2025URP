@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public static class Utils
 {
@@ -13,7 +15,7 @@ public static class Utils
         return component;
     }
 
-    public static T FindChild<T>(GameObject obj, string name) where T : Object
+    public static T FindChild<T>(this GameObject obj, string name) where T : UnityEngine.Object
     {
         if(typeof(T) == typeof(GameObject))
         {
@@ -41,5 +43,12 @@ public static class Utils
             list.Add(com);
         }
         return list;
+    }
+
+    public static void BindingBtn(this GameObject obj, Action action)
+    {
+        UI_EventHandle evt = obj.GetOrAddComponent<UI_EventHandle>();
+        evt.clickAction -= action;
+        evt.clickAction += action;
     }
 }

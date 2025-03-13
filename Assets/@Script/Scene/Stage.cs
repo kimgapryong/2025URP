@@ -38,4 +38,9 @@ public class Stage : MonoBehaviour
             Debug.Log("ºê·¡½º");
         }
     }
+
+    public void Clear()
+    {
+
+    }
 }

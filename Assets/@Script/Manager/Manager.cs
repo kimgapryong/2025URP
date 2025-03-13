@@ -19,6 +19,9 @@ public class Manager : MonoBehaviour
     private StageManager _stage = new StageManager();
     public static StageManager Stage { get { return Instance._stage; } }
 
+    private GameManager _game = new GameManager();
+    public static GameManager Game { get { return Instance._game; } }
+
     public PlayerController player { get; private set; }
 
     private void Awake()
