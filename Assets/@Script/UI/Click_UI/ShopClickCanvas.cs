@@ -6,7 +6,7 @@ public class ShopClickCanvas : Click_Base
 {
     public override void ClickAction()
     {
-        throw new System.NotImplementedException();
+        
     }
 
 }
