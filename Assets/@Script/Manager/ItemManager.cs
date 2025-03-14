@@ -31,8 +31,6 @@ public class ItemManager
             ui.myItemBase = itemCom;
             ui.SetBgSp(itemCom.itemData.sprite);
 
-            //ui.onItemClick -= EquierItem;
-            //ui.onItemClick = EquierItem;
         }
 
        
@@ -47,24 +45,5 @@ public class ItemManager
         backItem.transform.position = pos;
     }
 
-    //public void EquierItem(ItemBase item)
-    //{
-    //    Debug.Log(item);
-    //    if(item is FlashLight)
-    //    {
-    //        Manager.Instance.player.myCurItem = item;
-    //        return;
-    //    }
-    //    foreach (ItemBase itemCom in items)
-    //    {
-    //        if (itemCom is FlashLight)
-    //            continue;
-            
-    //        itemCom.isEquer = false;
-    //        itemCom.gameObject.SetActive(false);
-    //    }
-    //    item.isEquer = true;
-    //    item.gameObject.SetActive(true);
-    //    Manager.Instance.player.myCurItem = item;
-    //}
+    
 }
