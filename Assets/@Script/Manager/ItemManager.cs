@@ -28,31 +28,40 @@ public class ItemManager
             ui.myItemBase = itemCom;
             ui.SetBgSp(itemCom.itemData.sprite);
 
-            ui.onItemClick -= EquierItem;
-            ui.onItemClick += EquierItem;
+            //ui.onItemClick -= EquierItem;
+            //ui.onItemClick = EquierItem;
         }
 
        
         items.Add(itemCom);
     }
 
-    public void EquierItem(ItemBase item)
+    public void LoadBackItem(string itemName, Vector3 pos)
     {
-        if(item is FlashLight)
-        {
-            Manager.Instance.player.myCurItem = item;
-            return;
-        }
-        foreach (ItemBase itemCom in items)
-        {
-            if (itemCom is FlashLight)
-                continue;
-            
-            itemCom.isEquer = false;
-            itemCom.gameObject.SetActive(false);
-        }
-        item.isEquer = true;
-        item.gameObject.SetActive(true);
-        Manager.Instance.player.myCurItem = item;
+        GameObject item = Manager.Resources.Load<GameObject>($"Item/PlayerItem/{itemName}");
+        GameObject backItem = Object.Instantiate(item);
+        backItem.name = itemName;
+        backItem.transform.position = pos;
     }
+
+    //public void EquierItem(ItemBase item)
+    //{
+    //    Debug.Log(item);
+    //    if(item is FlashLight)
+    //    {
+    //        Manager.Instance.player.myCurItem = item;
+    //        return;
+    //    }
+    //    foreach (ItemBase itemCom in items)
+    //    {
+    //        if (itemCom is FlashLight)
+    //            continue;
+            
+    //        itemCom.isEquer = false;
+    //        itemCom.gameObject.SetActive(false);
+    //    }
+    //    item.isEquer = true;
+    //    item.gameObject.SetActive(true);
+    //    Manager.Instance.player.myCurItem = item;
+    //}
 }

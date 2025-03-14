@@ -56,9 +56,15 @@ public class PlayerController : CreatureContoller
                 return;
 
 
-            if (myCurItem != null)
-                myCurItem.ItemAblity();
+            //if (myCurItem != null)
+            //    myCurItem.ItemAblity();
+            itemAction?.Invoke();
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            currentClickAction?.Invoke();
         }
     }
     public override void Moving()

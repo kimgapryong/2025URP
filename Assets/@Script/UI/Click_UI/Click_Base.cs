@@ -12,11 +12,12 @@ public abstract class Click_Base : UI_Base
     Image curImage;
     
     public Transform playerTrans;
+    public GameObject myParent;
 
     public override bool Init()
     {
         base.Init();
-        
+        myParent = transform.parent.gameObject;
         playerTrans = player.transform;
         Bind<Image>(typeof(Images));
         curImage = GetImage((int)Images.ClickImage);
@@ -37,7 +38,7 @@ public abstract class Click_Base : UI_Base
             else
             {
                 curImage.gameObject.SetActive(false);
-                player.currentClickAction = null;
+                player.currentClickAction -= ClickAction;
             }
         }
         UpdateMehod();

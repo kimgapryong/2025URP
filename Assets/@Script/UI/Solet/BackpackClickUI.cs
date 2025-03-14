@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BackpackClickUI : SoletClickUI
@@ -48,10 +49,25 @@ public class BackpackClickUI : SoletClickUI
 
         itemNumTxt = GetText((int)Texts.ItemNum);
         itemNameTxt = GetText((int)Texts.ItemName);
+        ItemNum = 0;
+
+        itemNameTxt.gameObject.SetActive(false);
+        itemNumTxt.gameObject.SetActive(false);
 
         return true;
     }
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        foreach (var solet in Manager.Ui.backpackSolet)
+        {
+            solet.DesableSelectBg();
+        }
+        select.gameObject.SetActive(true);
+        CheckSprite();
 
+        //플레이어 아이템 장착 델리게이트
+        onItemClick?.Invoke(myItemBase);
+    }
     public void ChangeItemNum(int number)
     {
         itemNumTxt.text = number.ToString();

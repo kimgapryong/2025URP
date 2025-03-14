@@ -11,6 +11,8 @@ public class MainStarter : MonoBehaviour
     public Transform shoptrans;
 
 
+    public GameObject testItem;
+
 
     private Vector3 startPos = new Vector3(-24f, -7.5f);
     private Vector3 shopPos = new Vector3(9f, 1f);
@@ -61,6 +63,14 @@ public class MainStarter : MonoBehaviour
             shoper.name = shopChr.name;
             shoper.transform.localPosition = shopPos;
         }
-
+        //물약 생성
+        for(int i =0; i< 10; i++)
+        {
+            GameObject potion = Instantiate(testItem);
+            potion.name = testItem.name;
+            potion.transform.position = new Vector3(Random.Range(-3,7), Random.Range(-3, 7), 0);
+            Debug.Log(potion.transform.position);
+        }
+      
     }
 }

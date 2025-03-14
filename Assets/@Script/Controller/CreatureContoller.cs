@@ -9,7 +9,8 @@ public class CreatureContoller : BaseContoller
 
     public Action<float, float> hpAction;
 
-    public ItemBase myCurItem;
+    public Action itemAction;
+   // public ItemBase myCurItem;
     public bool damageCool;
     public float atkCoolTime = 1f;
 

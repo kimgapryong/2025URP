@@ -16,9 +16,9 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
         Sprite,
     }
 
-    Image select;
-    Image bgSp;
-    Image itemSp;
+    public Image select;
+    public Image bgSp;
+    public Image itemSp;
     public override bool Init()
     {
         base.Init();
@@ -34,8 +34,9 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
         
         return true;
     }
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("클릭");
         foreach(var solet in Manager.Ui.soletClickUIs)
         {
             solet.DesableSelectBg();
@@ -44,7 +45,13 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
         CheckSprite();
 
         //플레이어 아이템 장착 델리게이트
-        onItemClick?.Invoke(myItemBase);
+        //onItemClick?.Invoke(myItemBase);
+        if(myItemBase == null)
+        {
+            player.itemAction = null;
+            return;
+        }
+        player.itemAction = myItemBase.ItemAblity;
     }
 
     public void DesableSelectBg()

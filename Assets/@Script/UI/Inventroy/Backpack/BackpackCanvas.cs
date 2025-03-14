@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BackpackCanvas : UI_Base
 {
     public GameObject bg_Back;
-    public HashSet<SoletClickUI> bg_shops = new HashSet<SoletClickUI>();
+    
     enum Objects
     {
         BackpackSort,
@@ -22,8 +22,7 @@ public class BackpackCanvas : UI_Base
 
         for(int i = 0; i < Manager.Game.BackpackCount; i++)
         {
-            bg_shops.Add(Instantiate(Manager.Ui.CreateUI<SoletClickUI>("Backpack_UI/Bg_Shop"),bg_Back.transform));
-
+            Manager.Ui.backpackSolet.Add(Manager.Ui.CreateUI<BackpackClickUI>("Backpack_UI/Bg_Shop", bg_Back.transform));
         }
         return true;
     }

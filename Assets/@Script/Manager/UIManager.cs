@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager
 {
     public HashSet<SoletClickUI> soletClickUIs = new HashSet<SoletClickUI>();
-    public HashSet<SoletClickUI> backpackSolet = new HashSet<SoletClickUI>();
+    public HashSet<BackpackClickUI> backpackSolet = new HashSet<BackpackClickUI>();
     public BackpackCanvas Backpack { get; set; }
     
     public T CreateUI<T>(string path, Transform trans = null) where T : Component
