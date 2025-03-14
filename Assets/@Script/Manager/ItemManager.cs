@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class ItemManager
 {
+
     List<ItemBase> items = new List<ItemBase>();
     Queue<SoletClickUI> soQueue;
 

@@ -37,7 +37,6 @@ public class Stage : MonoBehaviour
         {
             yield return new WaitForSeconds(breathSpeed);
             Manager.Instance.player.CurrentBreath -= breathDamage;
-            Debug.Log("ºê·¡½º");
         }
     }
 

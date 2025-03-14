@@ -92,6 +92,9 @@ public class InvenCanvas : UI_Base
     {
         //매니저에서 관리하는 가방 칸수 초기화
         Manager.Ui.backpackSolet.Clear();
+        if(backpack != null)
+            backpack.items.Clear();
+        Manager.Game.CurrentBackCount = 0;
         if (gameObject.FindChild<BackpackCanvas>("BackpackCanvas") == null)
         {
             backpack = Manager.Ui.CreateUI<BackpackCanvas>("Backpack_UI/Bg_Back",transform);

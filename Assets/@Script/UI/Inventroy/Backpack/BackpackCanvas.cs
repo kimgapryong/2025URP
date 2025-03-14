@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BackpackCanvas : UI_Base
 {
     public GameObject bg_Back;
+    public Dictionary<string, ItemBase> items = new Dictionary<string, ItemBase>();
     
     enum Objects
     {
@@ -22,7 +23,9 @@ public class BackpackCanvas : UI_Base
 
         for(int i = 0; i < Manager.Game.BackpackCount; i++)
         {
-            Manager.Ui.backpackSolet.Add(Manager.Ui.CreateUI<BackpackClickUI>("Backpack_UI/Bg_Shop", bg_Back.transform));
+            BackpackClickUI backpack = Manager.Ui.CreateUI<BackpackClickUI>("Backpack_UI/Bg_Shop", bg_Back.transform);
+            backpack.backCanvas = this;
+            Manager.Ui.backpackSolet.Add(backpack);
         }
         return true;
     }

@@ -8,6 +8,8 @@ public class Item_Click : Click_Base
     {
         //가방에 빈 공간으로 보내기
         ItemBase item = myParent.GetComponent<ItemBase>();
+        Debug.Log(item);
+        Debug.Log(myParent);
         if (Manager.Ui.backpackSolet.Count > 0)
         {
             foreach (BackpackClickUI backClick in Manager.Ui.backpackSolet)
@@ -18,9 +20,10 @@ public class Item_Click : Click_Base
                     backClick.ItemNum++;
                     break;
                 }
-                else if (backClick.myItemBase == null)
+                else if (backClick.backCanvas.items.ContainsKey(item.name) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount)
                 {
                     backClick.myItemBase = item;
+                    
                     backClick.ItemName = item.itemData.name;
                     backClick.ItemNum++;
 
@@ -28,6 +31,9 @@ public class Item_Click : Click_Base
 
                     backClick.itemNameTxt.gameObject.SetActive(true);
                     backClick.itemNumTxt.gameObject.SetActive(true);
+
+                    Manager.Game.CurrentBackCount++;
+                    backClick.backCanvas.items.Add(item.name, item);
                     break;
                 }
                 else
@@ -37,7 +43,8 @@ public class Item_Click : Click_Base
                 }
             }
             player.currentClickAction = null;
-            Destroy(myParent);
+            myParent.SetActive(false);
+            //Destroy(myParent);
         }
 
     }

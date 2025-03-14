@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 public class BackpackClickUI : SoletClickUI
 {
+    public BackpackCanvas backCanvas;
     enum Texts
     {
         ItemNum,
@@ -65,8 +67,10 @@ public class BackpackClickUI : SoletClickUI
         select.gameObject.SetActive(true);
         CheckSprite();
 
-        //플레이어 아이템 장착 델리게이트
-        onItemClick?.Invoke(myItemBase);
+        if (myItemBase == null)
+            return;
+        
+        myItemBase.ItemAblity();
     }
     public void ChangeItemNum(int number)
     {

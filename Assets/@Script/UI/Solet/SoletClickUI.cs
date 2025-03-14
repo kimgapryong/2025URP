@@ -36,7 +36,6 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
     }
     public virtual void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("클릭");
         foreach(var solet in Manager.Ui.soletClickUIs)
         {
             solet.DesableSelectBg();
@@ -46,6 +45,7 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
 
         //플레이어 아이템 장착 델리게이트
         //onItemClick?.Invoke(myItemBase);
+
         if(myItemBase == null)
         {
             player.itemAction = null;

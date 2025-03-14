@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager
 {
     #region 가방 무게와 칸수
+    public int CurrentBackCount { get; set; }   
     public int BackpackCount { get; set; } = 6;
     public int BackpackWeight { get; set; }
 
