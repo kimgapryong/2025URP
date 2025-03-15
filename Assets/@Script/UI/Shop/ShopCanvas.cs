@@ -28,7 +28,7 @@ public class ShopCanvas : UI_Base
         {
             ShopItem shopItem = Manager.Ui.CreateUI<ShopItem>("Shop_UI/ShopFragment", GetObject((int)Objects.Content).transform);
             shopItem.items = itemDatas[i].items;
-            shopItem.StrInit();
+            shopItem.StrInit(i, itemDatas[i].invenItem);
  
         }
 

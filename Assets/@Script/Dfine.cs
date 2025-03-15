@@ -23,4 +23,16 @@ public class Dfine
         Idle,
         Play,
     }
+
+    public enum InvenItem
+    {
+        FlashLight,
+        Sword,
+        Gun,
+        ShotGun,
+        RayzerGun,
+        Legend,
+        Bagpack,
+        Breath,
+    }
 }

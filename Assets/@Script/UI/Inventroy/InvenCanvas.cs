@@ -44,7 +44,7 @@ public class InvenCanvas : UI_Base
 
         backObj = GetImage((int)Images.BackImage).gameObject;
 
-        ReBack(); // 처음 가방 설정
+        //ReBack(); // 처음 가방 설정
         backObj.gameObject.BindingBtn(OpenOrCloseBag);
 
         for (int i = 0; i < maxPanelCount; i++)
@@ -91,6 +91,7 @@ public class InvenCanvas : UI_Base
     public void ReBack()
     {
         //매니저에서 관리하는 가방 칸수 초기화
+        Destroy(backpack.gameObject);
         Manager.Ui.backpackSolet.Clear();
         if(backpack != null)
             backpack.items.Clear();

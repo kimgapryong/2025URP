@@ -9,6 +9,7 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
 {
     public ItemBase myItemBase = null;
     public Action<ItemBase> onItemClick;
+    public ShopItem shopItem = null;
     enum Images
     {
         Bg_Sprite,

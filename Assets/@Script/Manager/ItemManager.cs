@@ -25,13 +25,12 @@ public class ItemManager
         if (itemCom == null)
             return;
 
-        if(soQueue.Count > 0)
-        {
-            SoletClickUI ui = soQueue.Dequeue();
-            ui.myItemBase = itemCom;
-            ui.SetBgSp(itemCom.itemData.sprite);
+  
+       SoletClickUI ui = soQueue.Dequeue();
+       ui.myItemBase = itemCom;
+       ui.SetBgSp(itemCom.itemData.sprite);
 
-        }
+        
 
        
         items.Add(itemCom);
