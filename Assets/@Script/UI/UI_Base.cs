@@ -65,4 +65,8 @@ public class UI_Base : MonoBehaviour
     {
         return Get<Text>(key);  
     }
+    protected Button GetButton(int key)
+    {
+        return Get<Button>(key);    
+    }
 }

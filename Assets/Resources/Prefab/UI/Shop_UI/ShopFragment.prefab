@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 6474436608909143254}
   - component: {fileID: 3543070724626946650}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: UpgradeTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

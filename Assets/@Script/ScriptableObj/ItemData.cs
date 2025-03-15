@@ -15,5 +15,5 @@ public class ItemData : ScriptableObject
 [Serializable]
 public class ItemDataGroup
 {
-    public ItemData[] items; 
+    public ItemBase[] items; 
 }

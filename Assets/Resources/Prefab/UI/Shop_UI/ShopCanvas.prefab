@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3887044314203210507}
   - component: {fileID: 7337502498307865210}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: CloseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 1158511260471789040}
   - component: {fileID: 1649321013032036645}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 2063280705779841531}
   - component: {fileID: 4603040235080159625}
   - component: {fileID: 4544446212041103544}
+  - component: {fileID: 651802306524378365}
   m_Layer: 5
   m_Name: ShopCanvas
   m_TagString: Untagged
@@ -535,6 +536,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &651802306524378365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4329106447502157108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f43bc9d3d0c2fc44878f2c6cc232d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  itemDatas:
+  - items:
+    - {fileID: 7144245980154441263, guid: b15a2854437167e4e88075fe7ebab0b5, type: 3}
+    - {fileID: 7773554599410484570, guid: e5a5c6d75c4b5fa4eb4c55f3a094ff3a, type: 3}
 --- !u!1 &4973526648358863284
 GameObject:
   m_ObjectHideFlags: 0

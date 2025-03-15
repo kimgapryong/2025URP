@@ -26,29 +26,28 @@ public class MainStarter : MonoBehaviour
     private void InitStart()
     {
         // 플레이어 초기화
-        GameObject pa = GameObject.Find("Player");
-        if(pa == null)
+        if (Manager.Instance.player == null)
         {
-            pa = Instantiate(player);
+            GameObject pa = Instantiate(player);
             pa.name = player.name;
             PlayerController pc = pa.GetOrAddComponent<PlayerController>();
-            Manager.Instance.GetPlayer(pc);
+            Manager.Instance.GetPlayer(pc); // Manager에 플레이어 저장
             pa.transform.position = startPos;
             DontDestroyOnLoad(pa);
         }
+        Manager.Instance.player.transform.position = startPos;
         // 인벤토리 초기화
-        GameObject inven = GameObject.Find("InvenCanvas");
-        if(inven == null)
+       
+        if(Manager.Ui.InvenCanvas == null)
         {
             InvenCanvas inventory = Manager.Ui.CreateUI<InvenCanvas>("InvenCanvas");
-            inven = inventory.gameObject;
-            DontDestroyOnLoad (inven);
+            Manager.Ui.InvenCanvas = inventory;
+            DontDestroyOnLoad (inventory.gameObject);
         }
         //카메라 생성
-        GameObject mainCam = GameObject.Find("Main Camera");
-        if(mainCam == null)
+        if (Camera.main == null) // 기존 메인 카메라 확인
         {
-            mainCam = Instantiate(cam);
+            GameObject mainCam = Instantiate(cam);
             mainCam.name = cam.name;
             mainCam.transform.position = new Vector3(0, 0, -10);
             CameraController camCon = mainCam.GetOrAddComponent<CameraController>();
@@ -71,6 +70,13 @@ public class MainStarter : MonoBehaviour
             potion.transform.position = new Vector3(Random.Range(-3,7), Random.Range(-3, 7), 0);
             Debug.Log(potion.transform.position);
         }
-      
+
+        //상점 생성
+        if(Manager.Ui.Shop == null)
+        {
+            ShopCanvas shopCanvas = Manager.Ui.CreateUI<ShopCanvas>("Shop_UI/ShopCanvas");
+            Manager.Ui.Shop = shopCanvas;
+            DontDestroyOnLoad (shopCanvas.gameObject);
+        }
     }
 }

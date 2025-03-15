@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : CreatureContoller
@@ -67,6 +69,11 @@ public class PlayerController : CreatureContoller
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentClickAction?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("MainScene");
         }
     }
     public override void Moving()

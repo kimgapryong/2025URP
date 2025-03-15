@@ -7,6 +7,18 @@ public class ResourcesManager
     public T Load<T>(string path) where T : UnityEngine.Object
     {
         T obj = Resources.Load<T>($"Prefab/{path}");
+
         return obj;
+    }
+
+    public GameObject Instantiate(string name, Transform trans = null)
+    {
+        GameObject obj = Load<GameObject>(name);
+
+        GameObject clone = Object.Instantiate(obj);
+        clone.name = obj.name;
+        clone.transform.parent = trans;
+        
+        return clone;
     }
 }
