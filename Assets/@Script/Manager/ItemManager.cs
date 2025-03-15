@@ -6,18 +6,12 @@ using Object = UnityEngine.Object;
 
 public class ItemManager
 {
-
-    List<ItemBase> items = new List<ItemBase>();
-    Queue<SoletClickUI> soQueue;
-
-    public void Init()
-    {
-        soQueue = new Queue<SoletClickUI>(Manager.Ui.soletClickUIs);
-    }
-    public void LoadPlayerItem(string itemName)
+    public void LoadPlayerItem(string itemName, SoletClickUI solet)
     {
 
         GameObject item = Manager.Resources.Load<GameObject>($"Item/PlayerItem/{itemName}");
+        Debug.Log(Manager.Instance.player.transform.Find("WeponHole"));
+        Debug.Log(item);
         GameObject paItem = Object.Instantiate(item, Manager.Instance.player.transform.Find("WeponHole"));
 
         ItemBase itemCom = paItem.GetComponent<ItemBase>();
@@ -25,15 +19,13 @@ public class ItemManager
         if (itemCom == null)
             return;
 
-  
-       SoletClickUI ui = soQueue.Dequeue();
-       ui.myItemBase = itemCom;
-       ui.SetBgSp(itemCom.itemData.sprite);
+        if(solet.myItemBase != null)
+        {
+            Object.Destroy(solet.myItemBase.gameObject);
+        }
+        solet.myItemBase = itemCom;
+        solet.SetBgSp(itemCom.itemData.sprite);
 
-        
-
-       
-        items.Add(itemCom);
     }
 
     public void LoadBackItem(string itemName, Vector3 pos)

@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="New Item Data", menuName = "Item Data")]
 public class ItemData : ScriptableObject
 {
-  
+    public string itemManagerName;
     public string itemName;
     public float atkTime;
     public float damage;

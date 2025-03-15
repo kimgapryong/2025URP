@@ -67,6 +67,10 @@ public class ShopItem : UI_Base
         {
             upgrdebars[i] = Manager.Resources.Instantiate("UI/Shop_UI/UpgradeBar",GetObject((int)Objects.UpdgradeObject).transform);
         }
+
+        //초기 아이템 설정
+        if (invenItem == Dfine.InvenItem.FlashLight || invenItem == Dfine.InvenItem.Sword)
+            BuyOrUpgrade();
     }
 
     //업그레이드 버튼
@@ -75,10 +79,9 @@ public class ShopItem : UI_Base
         if (!isFirst)
         {
             isFirst = true;
-            Queue<SoletClickUI> solet = new Queue<SoletClickUI>(Manager.Ui.soletClickUIs);
-            foreach(var so in solet)
+            foreach (var so in Manager.Ui.soletClickUIs)
             {
-                if(so.shopItem == null)
+                if (so.shopItem == null)
                 {
                     so.shopItem = this;
                     mySolet = so;
@@ -104,6 +107,7 @@ public class ShopItem : UI_Base
             upgrdebars[upgradeCount].GetComponent<Image>().color = Color.green;
         }
 
+        Manager.Item.LoadPlayerItem(items[upgradeCount].itemData.itemManagerName, mySolet);
 
         Debug.Log("업그레이드 완료");
     }

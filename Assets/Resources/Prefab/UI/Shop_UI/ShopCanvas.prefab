@@ -550,8 +550,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   itemDatas:
-  - items:
+  - invenItem: 0
+    items:
     - {fileID: 7144245980154441263, guid: b15a2854437167e4e88075fe7ebab0b5, type: 3}
+    - {fileID: 7943641586452912524, guid: 5b4151ae808a0e24ebb5f06c89e93e35, type: 3}
+    - {fileID: 4083648156764750670, guid: efc0cb5cb65c7934fb4f7481f687c402, type: 3}
+  - invenItem: 1
+    items:
     - {fileID: 7773554599410484570, guid: e5a5c6d75c4b5fa4eb4c55f3a094ff3a, type: 3}
 --- !u!1 &4973526648358863284
 GameObject:
