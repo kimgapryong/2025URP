@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51d829b3121e7049836b5be70823cb3, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
+  itemManagerName: HealthItem
   itemName: "\uCCB4\uB825\uBB3C\uC57D"
   atkTime: 0
   damage: 0
+  itemWeight: 8
   sprite: {fileID: -6202940564662568092, guid: 937173201b1a9124082a9939b9bc0b5c, type: 3}

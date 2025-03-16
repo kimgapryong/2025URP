@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BackpackCanvas : UI_Base
 {
     public GameObject bg_Back;
+    public Text weight_txt;
     public Dictionary<string, ItemBase> items = new Dictionary<string, ItemBase>();
     
     enum Objects
@@ -13,13 +14,22 @@ public class BackpackCanvas : UI_Base
         BackpackSort,
         Bg_Back,
     }
+    enum Texts
+    {
+        Weight_Txt,
+    }
 
     public override bool Init()
     {
         base.Init();
         Bind<GameObject>(typeof(Objects));
+        Bind<Text>(typeof(Texts));
         bg_Back = GetObject((int)Objects.BackpackSort);
         bg_Back.SetActive(true);
+
+        weight_txt = GetText((int)Texts.Weight_Txt);
+        Manager.Game.backpackWeightAction = ChangeWeight; //함수 등록
+        Manager.Game.BackpackWeight = 0;                                                         
 
         for(int i = 0; i < Manager.Game.BackpackCount; i++)
         {
@@ -29,4 +39,13 @@ public class BackpackCanvas : UI_Base
         }
         return true;
     }
+
+    #region 가방 무게 관련 함수
+
+    public void ChangeWeight(int weight)
+    {
+        weight_txt.text = $"무게: {weight}";
+    }
+
+    #endregion
 }

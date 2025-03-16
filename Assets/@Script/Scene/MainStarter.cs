@@ -36,6 +36,8 @@ public class MainStarter : MonoBehaviour
             DontDestroyOnLoad(pa);
         }
         Manager.Instance.player.transform.position = startPos;
+        Manager.Instance.player.CurrentBreath = Manager.Instance.player.MaxBreath;
+        Manager.Instance.player.CurrentHp = Manager.Instance.player.Hp;
         // 인벤토리 초기화
        
         if(Manager.Ui.InvenCanvas == null)

@@ -11,6 +11,7 @@ public class ItemData : ScriptableObject
     public string itemName;
     public float atkTime;
     public float damage;
+    public int itemWeight;
     public Sprite sprite;
 }
 [Serializable]

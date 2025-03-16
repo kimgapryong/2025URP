@@ -41,7 +41,7 @@ public class BackpackClickUI : SoletClickUI
             ChangeItemName(value);
         }
     }
-
+    public string name;
     public Text itemNumTxt;
     public Text itemNameTxt;
     public override bool Init()
@@ -65,12 +65,38 @@ public class BackpackClickUI : SoletClickUI
             solet.DesableSelectBg();
         }
         select.gameObject.SetActive(true);
-        CheckSprite();
+        //CheckSprite();
 
         if (myItemBase == null)
             return;
         
         myItemBase.ItemAblity();
+
+        //아이템 사용 
+        ItemNum--;
+        Manager.Game.BackpackWeight -= myItemBase.itemData.itemWeight;
+
+        if(ItemNum <= 0)
+            ResetBagpack();
+        
+    }
+
+    public void ResetBagpack()
+    {
+        backCanvas.items.Remove(name);
+        name = null;
+
+        myItemBase = null;
+
+        bgSp.sprite = null;
+        itemSp.sprite = null;
+
+        itemNumTxt.gameObject.SetActive(false );    
+        itemNameTxt.gameObject.SetActive(false);
+        itemSp.gameObject.SetActive(false);
+        bgSp.gameObject.SetActive(false);
+
+        Manager.Game.CurrentBackCount--;
     }
     public void ChangeItemNum(int number)
     {
@@ -78,7 +104,7 @@ public class BackpackClickUI : SoletClickUI
     }
     public void ChangeItemName(string name)
     {
-        if(ItemName == name) return;
         itemNameTxt.text = name;
+        Debug.Log(name);
     }
 }

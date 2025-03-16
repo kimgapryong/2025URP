@@ -42,10 +42,6 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
             solet.DesableSelectBg();
         }
         select.gameObject.SetActive(true);
-        CheckSprite();
-
-        //플레이어 아이템 장착 델리게이트
-        //onItemClick?.Invoke(myItemBase);
 
         if(myItemBase == null)
         {
@@ -60,21 +56,12 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
         select.gameObject.SetActive(false);
     }
 
-    public void CheckSprite()
-    {
-        if (bgSp.sprite != null)
-        {
-            if (itemSp.sprite != null)
-                return;
-
-            itemSp.sprite = bgSp.sprite;
-            itemSp.gameObject.SetActive(true);
-        }
-    }
 
     public void SetBgSp(Sprite sprite)
     {
-        bgSp.gameObject.SetActive(true);
         bgSp.sprite = sprite;
+        itemSp.sprite = sprite;
+        bgSp.gameObject.SetActive(true);
+        itemSp.gameObject.SetActive(true);
     }
 }

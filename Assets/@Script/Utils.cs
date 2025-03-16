@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -50,5 +51,14 @@ public static class Utils
         UI_EventHandle evt = obj.GetOrAddComponent<UI_EventHandle>();
         evt.clickAction -= action;
         evt.clickAction += action;
+    }
+
+    public static void AddPreatical(this GameObject obj, Vector3 dir, float damage, float speed, CreatureContoller creature)
+    {
+        Preatical preatical = obj.GetOrAddComponent<Preatical>();
+        preatical.dir = dir;
+        preatical.damage = damage;
+        preatical.speed = speed;
+        preatical.atker = creature;
     }
 }

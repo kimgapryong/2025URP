@@ -24,6 +24,8 @@ public class Stage : MonoBehaviour
             isFrist = true;
             if(MyStage != Dfine.StageScene.Lobby)
                 StartCoroutine(PlayerBrath());
+
+            Manager.Instance.player.PlayerClear();
             return true;
         }
         return false;

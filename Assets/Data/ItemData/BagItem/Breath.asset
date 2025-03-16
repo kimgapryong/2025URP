@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51d829b3121e7049836b5be70823cb3, type: 3}
+  m_Name: Breath
+  m_EditorClassIdentifier: 
+  itemManagerName: BreathItem
+  itemName: "\uC0B0\uC18C \uBB3C\uC57D"
+  atkTime: 0
+  damage: 0
+  itemWeight: 10
+  sprite: {fileID: 8618505411793156745, guid: 937173201b1a9124082a9939b9bc0b5c, type: 3}

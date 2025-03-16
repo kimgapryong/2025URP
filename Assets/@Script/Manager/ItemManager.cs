@@ -10,9 +10,8 @@ public class ItemManager
     {
 
         GameObject item = Manager.Resources.Load<GameObject>($"Item/PlayerItem/{itemName}");
-        Debug.Log(Manager.Instance.player.transform.Find("WeponHole"));
-        Debug.Log(item);
         GameObject paItem = Object.Instantiate(item, Manager.Instance.player.transform.Find("WeponHole"));
+        paItem.name = itemName;
 
         ItemBase itemCom = paItem.GetComponent<ItemBase>();
 

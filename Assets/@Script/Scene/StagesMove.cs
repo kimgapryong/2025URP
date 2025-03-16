@@ -11,7 +11,7 @@ public class StagesMove : MonoBehaviour
     {
         for(int i =0;  i < door.Length; i++)
         {
-            if(Vector3.Distance(Manager.Instance.player.transform.position, door[i].position) < 1f)
+            if(Vector3.Distance(Manager.Instance.player.transform.position, door[i].position) < 2f)
             {
                 if (Manager.Stage.CheckStage(i))
                 {

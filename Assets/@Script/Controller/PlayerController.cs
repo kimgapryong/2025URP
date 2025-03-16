@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : CreatureContoller
 {
-    public int text = 0;
     public Action currentClickAction; //현재 아이템
     public Action itemClickAction; //아이템 클릭
     public Action<float, float> breathAction; //플레이어 산소 게이지
@@ -78,6 +77,12 @@ public class PlayerController : CreatureContoller
     }
     public override void Moving()
     {
-        transform.position += dir * creatureData.speed * Time.deltaTime;
+        transform.position += dir * Speed * Time.deltaTime;
+    }
+
+    public void PlayerClear()
+    {
+        Speed = creatureData.speed;
+        Damage = creatureData.damage;
     }
 }

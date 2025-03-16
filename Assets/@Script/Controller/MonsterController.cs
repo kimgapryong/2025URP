@@ -91,22 +91,5 @@ public class MonsterController : CreatureContoller
         rigid.velocity = Vector3.zero;
         state = Dfine.State.Move;
     }
-    /*    private void OnTriggerEnter2D(Collider2D collision)
-        {
-            CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
-            if (cur != null && !damageCool)
-            {
-                cur.Ondamage(this, Damage);
-            }
-        }
-
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-            CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
-            if (cur != null && !damageCool)
-            {
-                cur.Ondamage(this, Damage);
-            }
-        }*/
 
 }

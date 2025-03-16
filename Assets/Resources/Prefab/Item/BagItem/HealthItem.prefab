@@ -390,3 +390,4 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 1636753d19a3bf143aa4f61f3b5616fd, type: 2}
   player: {fileID: 0}
   animator: {fileID: 0}
+  setHp: 20

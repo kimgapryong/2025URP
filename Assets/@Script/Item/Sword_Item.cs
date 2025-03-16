@@ -46,10 +46,7 @@ public class Sword_Item : ItemBase
     {
         CreatureContoller cur = collision.gameObject.GetComponent<MonsterController>();
         if (cur != null)
-        {
             cur.Ondamage(player, itemData.damage);
-            
-        }
     }
 
 }

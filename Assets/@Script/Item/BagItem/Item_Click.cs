@@ -8,23 +8,24 @@ public class Item_Click : Click_Base
     {
         //가방에 빈 공간으로 보내기
         ItemBase item = myParent.GetComponent<ItemBase>();
-        Debug.Log(item);
-        Debug.Log(myParent);
         if (Manager.Ui.backpackSolet.Count > 0)
         {
             foreach (BackpackClickUI backClick in Manager.Ui.backpackSolet)
             {
-                if(item.itemData.name == backClick.ItemName)
+                if(item.itemData.itemManagerName == backClick.name)
                 {
-                    Debug.Log(backClick.ItemNum);
+                    Debug.LogWarning("추가다 추가");
                     backClick.ItemNum++;
+                    Manager.Game.BackpackWeight += item.itemData.itemWeight;
                     break;
                 }
                 else if (backClick.backCanvas.items.ContainsKey(item.name) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount)
                 {
+                    Debug.LogWarning("여기다 여기야");
                     backClick.myItemBase = item;
                     
-                    backClick.ItemName = item.itemData.name;
+                    backClick.ItemName = item.itemData.itemName;
+                    backClick.name = item.itemData.itemManagerName;
                     backClick.ItemNum++;
 
                     backClick.SetBgSp(item.itemData.sprite);
@@ -32,19 +33,24 @@ public class Item_Click : Click_Base
                     backClick.itemNameTxt.gameObject.SetActive(true);
                     backClick.itemNumTxt.gameObject.SetActive(true);
 
+                    Manager.Game.BackpackWeight += item.itemData.itemWeight;
                     Manager.Game.CurrentBackCount++;
-                    backClick.backCanvas.items.Add(item.name, item);
+                    backClick.backCanvas.items.Add(item.itemData.itemManagerName, item);
                     break;
                 }
                 else
                 {
+                    if(backClick.backCanvas.items.TryGetValue(item.name, out ItemBase items))
+                    {
+                        Debug.Log(items);
+                    }
                     //TODO가방 공간이 부족 한걸 표현
-                    
+
                 }
+
             }
             player.currentClickAction = null;
-            myParent.SetActive(false);
-            //Destroy(myParent);
+            myParent.transform.position = new Vector3(500, 500);
         }
 
     }
