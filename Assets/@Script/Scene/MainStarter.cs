@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MainStarter : MonoBehaviour
@@ -37,10 +38,13 @@ public class MainStarter : MonoBehaviour
         }
         else
         {
-            foreach (var item in Manager.Instance.player.itemHole.GetComponentsInChildren<Transform>())
-            {
-                Destroy(item.gameObject);
-            }
+            //Manager.Ui.backpackSolet.Clear();
+            //Manager.Ui.Backpack.items.Clear();
+            //foreach (var item in Manager.Instance.player.itemHole.GetComponentsInChildren<Transform>().Skip(1)) // 외워
+            //{
+            //    Destroy(item.gameObject);
+            //}
+            //Debug.Log("끝난라라");
         }
         Manager.Instance.player.transform.position = startPos;
         Manager.Instance.player.CurrentBreath = Manager.Instance.player.MaxBreath;
@@ -78,7 +82,7 @@ public class MainStarter : MonoBehaviour
             GameObject potion = Instantiate(testItem[rand]);
             potion.name = testItem[rand].name;
             potion.transform.position = new Vector3(Random.Range(-3,7), Random.Range(-3, 7), 0);
-            Debug.Log(potion.transform.position);
+
         }
 
         //상점 생성

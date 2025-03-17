@@ -77,7 +77,6 @@ public class InvenCanvas : UI_Base
 
     public void Breath_UI(float cur, float max)
     {
-        Debug.Log(max);
         float sliderValue = Mathf.Max(cur, 0);
         brSlider.value = sliderValue / max;
     }

@@ -25,7 +25,7 @@ public abstract class Click_Base : UI_Base
         curImage = GetImage((int)Images.ClickImage);
 
         changeColor?.Invoke(); // »ö º¯°æ
-        Debug.Log(curImage);
+
         return true;
     }
 
