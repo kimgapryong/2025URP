@@ -36,4 +36,12 @@ public class Dfine
         Breath,
         MiniMap,
     }
+
+    public enum ItemRating
+    {
+        None,
+        Common,
+        Normal,
+        Legend
+    }
 }

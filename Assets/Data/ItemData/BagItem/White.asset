@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51d829b3121e7049836b5be70823cb3, type: 3}
   m_Name: White
   m_EditorClassIdentifier: 
-  itemManagerName: 
-  itemName: 
+  itemManagerName: WhiteItem
+  itemName: "\uC740\uC2E0 \uBB3C\uC57D"
   atkTime: 0
   damage: 0
-  itemWeight: 0
-  sprite: {fileID: 0}
+  itemWeight: 5
+  sprite: {fileID: -1061600653231999548, guid: 937173201b1a9124082a9939b9bc0b5c, type: 3}

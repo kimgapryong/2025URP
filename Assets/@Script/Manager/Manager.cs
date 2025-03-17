@@ -23,6 +23,7 @@ public class Manager : MonoBehaviour
     public static GameManager Game { get { return Instance._game; } }
 
     public PlayerController player { get; private set; }
+    public RandomSpwanController RanomSpwan {  get; private set; }
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class Manager : MonoBehaviour
             return;
         }
         player = pa;
+        RanomSpwan = player.GetComponent<RandomSpwanController>();
     }
 
 

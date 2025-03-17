@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 6061300377055700625}
   - component: {fileID: 2404736633168491769}
   - component: {fileID: 4241930230188218613}
+  - component: {fileID: 4361910056604615906}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -276,6 +277,10 @@ MonoBehaviour:
   isDie: 0
   creatureData: {fileID: 11400000, guid: e36af1752cdbf97428bdf2436adadee9, type: 2}
   animator: {fileID: 0}
+  itemHole: {fileID: 0}
+  weaponHole: {fileID: 0}
+  isRole: 0
+  isGod: 0
   atkTime: 0
 --- !u!70 &2404736633168491769
 CapsuleCollider2D:
@@ -339,3 +344,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4361910056604615906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076288521950078128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5785a097aa2ae2f419f796557c856a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFrist: 0
+  common:
+  - {fileID: 8231793794539443446, guid: 671d43fadf006404ab19a45fa49b548d, type: 3}
+  - {fileID: 7977049252438513902, guid: 763ac5d3e54c2ca41af9a5eb954262f3, type: 3}
+  - {fileID: 1846483806539705922, guid: 1a3b2160d6178f24bbd991f7474cd2cb, type: 3}
+  - {fileID: 1846483806539705922, guid: 1a3b2160d6178f24bbd991f7474cd2cb, type: 3}
+  - {fileID: 570010194663063838, guid: a9510177d8c57904cbf58d727a9d6817, type: 3}
+  - {fileID: 5899909183536291123, guid: 2e2d1d585ee6b904286f88b27cfe5233, type: 3}
+  - {fileID: 5318527495965882369, guid: 607e04d6712253b49b200bf21aca1d76, type: 3}
+  - {fileID: 939459130618459751, guid: d46a263b90b571d4c8cdfb351bb7cc82, type: 3}
+  - {fileID: 5606659872532371569, guid: c7bcf251b042e8b4c86caec9d89e78d2, type: 3}
+  normal:
+  - {fileID: 5351279436569045398, guid: 0e113d9239dc06942a07662d3cfaea37, type: 3}
+  - {fileID: 3288489478939850495, guid: f1320275084236c4bb7aa74d87b5733b, type: 3}
+  - {fileID: 5810945726848074136, guid: 2d0529492d854f44c929ec65d12d5b51, type: 3}
+  - {fileID: 758710627986004367, guid: ff677457935942d4e88b20a89e99806c, type: 3}
+  - {fileID: 6564019265671447202, guid: 63e52a9036667704faaa49ae0d9ded8e, type: 3}
+  - {fileID: 5014656990359345119, guid: 166c79544023b7d4f9b9d2c095ad29c7, type: 3}
+  - {fileID: 6232327369166820646, guid: 4d9d88be35504f84ea443feb1f91fa9d, type: 3}
+  legend:
+  - {fileID: 2705315456787170560, guid: 14232f079946e7342a9a5378f7069a50, type: 3}

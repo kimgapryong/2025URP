@@ -36,7 +36,7 @@ public class ShopItem : UI_Base
 
     private bool isFirst;
 
-    public ItemBase[] items;
+    public ItemData[] items;
     GameObject[] upgrdebars;
     public SoletClickUI mySolet;
     public void StrInit(int myItemID, Dfine.InvenItem inven)
@@ -60,8 +60,8 @@ public class ShopItem : UI_Base
         //가장 처음 아이템 이미지 설정
         upgrdebars = new GameObject[items.Length];
         Debug.Log("rmxs");
-        itemSp.sprite = items[0].itemData.sprite;
-        itemName.text = items[0].itemData.name;
+        itemSp.sprite = items[0].sprite;
+        itemName.text = items[0].name;
 
         for (int i = 0; i < items.Length; i++)
         {
@@ -69,7 +69,7 @@ public class ShopItem : UI_Base
         }
 
         //초기 아이템 설정
-        if (invenItem == Dfine.InvenItem.FlashLight || invenItem == Dfine.InvenItem.Sword)
+        if (invenItem == Dfine.InvenItem.FlashLight || invenItem == Dfine.InvenItem.Sword || invenItem == Dfine.InvenItem.Bagpack)
             BuyOrUpgrade();
     }
 
@@ -81,6 +81,9 @@ public class ShopItem : UI_Base
             isFirst = true;
             foreach (var so in Manager.Ui.soletClickUIs)
             {
+                if (invenItem == Dfine.InvenItem.Breath || invenItem == Dfine.InvenItem.Bagpack)
+                    break;
+
                 if (so.shopItem == null)
                 {
                     so.shopItem = this;
@@ -102,12 +105,33 @@ public class ShopItem : UI_Base
             if (upgradeCount  == maxUpgrade - 1)
                 GetText((int)Texts.UpgradeTxt).text = "마지막";
 
-            itemSp.sprite = items[upgradeCount].itemData.sprite;
-            itemName.text = items[upgradeCount].itemData.itemName;
+            itemSp.sprite = items[upgradeCount].sprite;
+            itemName.text = items[upgradeCount].itemName;
             upgrdebars[upgradeCount].GetComponent<Image>().color = Color.green;
         }
 
-        Manager.Item.LoadPlayerItem(items[upgradeCount].itemData.itemManagerName, mySolet);
+        if(invenItem == Dfine.InvenItem.Bagpack)
+        {
+            
+            if(Manager.Ui.Backpack != null)
+                Destroy(Manager.Ui.Backpack.gameObject);
+
+            GetText((int)Texts.UpgradeTxt).text = "강화";
+            Manager.Game.BackpackCount = (int)items[upgradeCount].damage;
+            Manager.Game.MaxBackpackWeight = items[upgradeCount].itemWeight;
+            Manager.Ui.InvenCanvas.ReBack();
+            return;
+        }
+
+        if(invenItem == Dfine.InvenItem.Breath)
+        {
+            player.MaxBreath = items[upgradeCount].itemWeight;
+            player.CurrentBreath = items[upgradeCount].itemWeight;
+            GetText((int)Texts.UpgradeTxt).text = "강화";
+            return;
+        }
+
+        Manager.Item.LoadPlayerItem(items[upgradeCount].itemManagerName, mySolet);
 
         Debug.Log("업그레이드 완료");
     }

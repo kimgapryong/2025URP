@@ -87,7 +87,7 @@ public class PlayerController : CreatureContoller
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("Stage0");
         }
     }
 

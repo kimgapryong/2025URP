@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,12 @@ using UnityEngine.UI;
 
 public abstract class Click_Base : UI_Base
 {
+    public Action changeColor;
     enum Images
     {
         ClickImage,
     }
-    Image curImage;
+    public Image curImage;
     
     public Transform playerTrans;
     public GameObject myParent;
@@ -21,6 +23,8 @@ public abstract class Click_Base : UI_Base
         playerTrans = player.transform;
         Bind<Image>(typeof(Images));
         curImage = GetImage((int)Images.ClickImage);
+
+        changeColor?.Invoke(); // »ö º¯°æ
         Debug.Log(curImage);
         return true;
     }

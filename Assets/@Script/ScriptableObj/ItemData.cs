@@ -11,6 +11,8 @@ public class ItemData : ScriptableObject
     public string itemName;
     public float atkTime;
     public float damage;
+
+    public float money;
     public int itemWeight;
     public Sprite sprite;
 }
@@ -18,5 +20,5 @@ public class ItemData : ScriptableObject
 public class ItemDataGroup
 {
     public Dfine.InvenItem invenItem;
-    public ItemBase[] items; 
+    public ItemData[] items; 
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public static class Stages
 {
-    public static bool[] stages = new bool[5]
+    public static bool[] stages = new bool[6]
     {
+        true,
         true,
         false,
         false,

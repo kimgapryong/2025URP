@@ -92,6 +92,7 @@ public class MonsterController : CreatureContoller
     }
     public override void OnDie()
     {
+        Manager.Instance.RanomSpwan.RandomItemSpwan(transform.position);
         Destroy(gameObject);   
     }
 

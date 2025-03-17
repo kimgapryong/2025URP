@@ -11,6 +11,8 @@ public class GameManager
     public int CurrentBackCount { get; set; }   
     public int BackpackCount { get; set; } = 6;
 
+
+    public int MaxBackpackWeight { get; set; }
     private int _backWeigth = 0;
     public int BackpackWeight
     {

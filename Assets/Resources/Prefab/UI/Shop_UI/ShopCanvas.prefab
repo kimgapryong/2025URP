@@ -552,15 +552,25 @@ MonoBehaviour:
   itemDatas:
   - invenItem: 0
     items:
-    - {fileID: 7144245980154441263, guid: b15a2854437167e4e88075fe7ebab0b5, type: 3}
-    - {fileID: 7943641586452912524, guid: 5b4151ae808a0e24ebb5f06c89e93e35, type: 3}
-    - {fileID: 4083648156764750670, guid: efc0cb5cb65c7934fb4f7481f687c402, type: 3}
+    - {fileID: 11400000, guid: 06c9a9cfe1e8ece47a7e1b63ac47cae2, type: 2}
+    - {fileID: 11400000, guid: f2a81eeb4433a2a499dc337ac7eaf8c8, type: 2}
+    - {fileID: 11400000, guid: 6a109b46726ab054c822fdc84a0c4cd0, type: 2}
   - invenItem: 1
     items:
-    - {fileID: 7773554599410484570, guid: e5a5c6d75c4b5fa4eb4c55f3a094ff3a, type: 3}
+    - {fileID: 11400000, guid: 645bb71a2d8db9242982ca656ca77740, type: 2}
   - invenItem: 8
     items:
-    - {fileID: 1767233128453755730, guid: f5cb805aa6b0c654e85a7a356af4067d, type: 3}
+    - {fileID: 11400000, guid: c28ea3ba19677b541834390c6488518e, type: 2}
+  - invenItem: 6
+    items:
+    - {fileID: 11400000, guid: 2421f8670cc14394dbac4b946c42813e, type: 2}
+    - {fileID: 11400000, guid: 06507d4c0fad32f44bcf1b5942a77809, type: 2}
+    - {fileID: 11400000, guid: 3e054eda460ead247980cb4e216109bf, type: 2}
+  - invenItem: 7
+    items:
+    - {fileID: 11400000, guid: d194af988c556bd448b5546fee050827, type: 2}
+    - {fileID: 11400000, guid: 1af390d56feb1f046b7bd0c443c83745, type: 2}
+    - {fileID: 11400000, guid: 13750e4c8ff34da4e9e93c3dc51a1aba, type: 2}
 --- !u!1 &4973526648358863284
 GameObject:
   m_ObjectHideFlags: 0
