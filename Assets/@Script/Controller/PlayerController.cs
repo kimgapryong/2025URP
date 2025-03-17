@@ -13,6 +13,8 @@ public class PlayerController : CreatureContoller
     public Action itemClickAction; //아이템 클릭
     public Action<float, float> breathAction; //플레이어 산소 게이지
 
+    public Transform itemHole;
+    public Transform weaponHole;
     #region 산소 게이지
     private float _curBreath;
     public float CurrentBreath
@@ -38,6 +40,8 @@ public class PlayerController : CreatureContoller
 
         state = Dfine.State.Move;
         CurrentBreath = MaxBreath;
+        itemHole = transform.Find("ItemHole");
+        weaponHole = transform.Find("WeponHole");
         return true;
     }
     public override void UpdateMehod()
@@ -45,8 +49,8 @@ public class PlayerController : CreatureContoller
         float x = Input.GetAxisRaw("Horizontal"); 
         float y = Input.GetAxisRaw("Vertical");
         dir = new Vector3(x, y, 0);
+
         //외워야할 것
-      
         base.UpdateMehod();
     }
 

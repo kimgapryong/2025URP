@@ -11,7 +11,7 @@ public class MainStarter : MonoBehaviour
     public Transform shoptrans;
 
 
-    public GameObject testItem;
+    public GameObject[] testItem;
 
 
     private Vector3 startPos = new Vector3(-24f, -7.5f);
@@ -35,12 +35,19 @@ public class MainStarter : MonoBehaviour
             pa.transform.position = startPos;
             DontDestroyOnLoad(pa);
         }
+        else
+        {
+            foreach (var item in Manager.Instance.player.itemHole.GetComponentsInChildren<Transform>())
+            {
+                Destroy(item.gameObject);
+            }
+        }
         Manager.Instance.player.transform.position = startPos;
         Manager.Instance.player.CurrentBreath = Manager.Instance.player.MaxBreath;
         Manager.Instance.player.CurrentHp = Manager.Instance.player.Hp;
         // 인벤토리 초기화
-       
-        if(Manager.Ui.InvenCanvas == null)
+
+        if (Manager.Ui.InvenCanvas == null)
         {
             InvenCanvas inventory = Manager.Ui.CreateUI<InvenCanvas>("InvenCanvas");
             Manager.Ui.InvenCanvas = inventory;
@@ -67,8 +74,9 @@ public class MainStarter : MonoBehaviour
         //물약 생성
         for(int i =0; i< 10; i++)
         {
-            GameObject potion = Instantiate(testItem);
-            potion.name = testItem.name;
+            int rand = Random.Range(0, testItem.Length);
+            GameObject potion = Instantiate(testItem[rand]);
+            potion.name = testItem[rand].name;
             potion.transform.position = new Vector3(Random.Range(-3,7), Random.Range(-3, 7), 0);
             Debug.Log(potion.transform.position);
         }
@@ -79,6 +87,14 @@ public class MainStarter : MonoBehaviour
             ShopCanvas shopCanvas = Manager.Ui.CreateUI<ShopCanvas>("Shop_UI/ShopCanvas");
             Manager.Ui.Shop = shopCanvas;
             DontDestroyOnLoad (shopCanvas.gameObject);
+        }
+
+        //미니맵 생성
+        if(Manager.Ui.MiniMapCanvas == null)
+        {
+            MiniMapCanvas mini = Manager.Ui.CreateUI<MiniMapCanvas>("MiniMapCanvas");
+            Manager.Ui.MiniMapCanvas = mini;
+            DontDestroyOnLoad(mini.gameObject);
         }
     }
 }

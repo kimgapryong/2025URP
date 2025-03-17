@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51d829b3121e7049836b5be70823cb3, type: 3}
+  m_Name: BlueSpia
+  m_EditorClassIdentifier: 
+  itemManagerName: BlueSpia
+  itemName: "\uBE14\uB8E8\uC0AC\uD30C\uC774\uC544"
+  atkTime: 0
+  damage: 0
+  itemWeight: 30
+  sprite: {fileID: 21300000, guid: 128a5fac5f8bae94b9d49972c145766c, type: 3}

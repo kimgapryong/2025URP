@@ -20,12 +20,18 @@ public class InvenCanvas : UI_Base
         Hp_Slider,
         Breath_Slider,
     }
+    enum Texts
+    {
+        AllText,
+    }
 
     public BackpackCanvas backpack;
 
     public GameObject backObj;
     Slider hpSlider;
     Slider brSlider;
+    Text allTxt;
+    Coroutine _cor;
 
     private int maxPanelCount = 6;
     public override bool Init()
@@ -35,9 +41,12 @@ public class InvenCanvas : UI_Base
         Bind<Image>(typeof(Images));
         Bind<GameObject>(typeof(Objects));
         Bind<Slider>(typeof(Sliders));
+        Bind<Text>(typeof(Texts));
 
         hpSlider = GetSlider((int)Sliders.Hp_Slider);
         brSlider = GetSlider((int)Sliders.Breath_Slider);
+        allTxt = GetText((int)Texts.AllText);
+        allTxt.gameObject.SetActive(false);
 
         player.hpAction = Hp_UI;
         player.breathAction = Breath_UI;
@@ -45,6 +54,8 @@ public class InvenCanvas : UI_Base
         backObj = GetImage((int)Images.BackImage).gameObject;
 
         ReBack(); // 처음 가방 설정
+
+        allTxt.transform.SetAsLastSibling(); //외워
         backObj.gameObject.BindingBtn(OpenOrCloseBag);
 
         for (int i = 0; i < maxPanelCount; i++)
@@ -54,7 +65,7 @@ public class InvenCanvas : UI_Base
         }
 
         // 플레이어 start 아이템 설정
-       
+
         return true;
     }
 
@@ -76,7 +87,7 @@ public class InvenCanvas : UI_Base
     #region 플레이어 가방 관련
     public void OpenOrCloseBag()
     {
-        if(backpack.gameObject.activeSelf == true)
+        if (backpack.gameObject.activeSelf == true)
         {
             backpack.gameObject.SetActive(false);
         }
@@ -91,17 +102,34 @@ public class InvenCanvas : UI_Base
         //매니저에서 관리하는 가방 칸수 초기화
         //Destroy(backpack.gameObject);
         Manager.Ui.backpackSolet.Clear();
-        if(backpack != null)
+        if (backpack != null)
             backpack.items.Clear();
         Manager.Game.CurrentBackCount = 0;
         if (gameObject.FindChild<BackpackCanvas>("BackpackCanvas") == null)
         {
-            backpack = Manager.Ui.CreateUI<BackpackCanvas>("Backpack_UI/Bg_Back",transform);
+            backpack = Manager.Ui.CreateUI<BackpackCanvas>("Backpack_UI/Bg_Back", transform);
             backpack.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             backpack.name = "BackpackCanvas";
             backpack.gameObject.SetActive(false);
         }
-           
+
     }
     #endregion
+
+    public void GetAllTxt(string txt)
+    {
+        allTxt.text = txt;
+
+        if (_cor != null)
+            StopCoroutine(_cor);
+
+        _cor = StartCoroutine(waitTxt());
+    }
+
+    private IEnumerator waitTxt()
+    {
+        allTxt.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        allTxt.gameObject.SetActive(false);
+    }
 }

@@ -34,5 +34,6 @@ public class Dfine
         Legend,
         Bagpack,
         Breath,
+        MiniMap,
     }
 }

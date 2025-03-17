@@ -19,7 +19,7 @@ public class Item_Click : Click_Base
                     Manager.Game.BackpackWeight += item.itemData.itemWeight;
                     break;
                 }
-                else if (backClick.backCanvas.items.ContainsKey(item.name) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount)
+                else if (backClick.backCanvas.items.ContainsKey(item.name) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount && backClick.myItemBase == null)
                 {
                     Debug.LogWarning("여기다 여기야");
                     backClick.myItemBase = item;
@@ -50,6 +50,7 @@ public class Item_Click : Click_Base
 
             }
             player.currentClickAction = null;
+            myParent.transform.SetParent(Manager.Instance.player.itemHole);
             myParent.transform.position = new Vector3(500, 500);
         }
 

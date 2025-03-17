@@ -156,7 +156,9 @@ MonoBehaviour:
   shopChr: {fileID: 2189690161737427039, guid: e6a61dbc68bb2804a84f194b3e26cd43, type: 3}
   cam: {fileID: 4320494685325887396, guid: 15c5d20b83401134380e8558f321cb08, type: 3}
   shoptrans: {fileID: 429758781}
-  testItem: {fileID: 758710627986004367, guid: ff677457935942d4e88b20a89e99806c, type: 3}
+  testItem:
+  - {fileID: 7977049252438513902, guid: 763ac5d3e54c2ca41af9a5eb954262f3, type: 3}
+  - {fileID: 6232327369166820646, guid: 4d9d88be35504f84ea443feb1f91fa9d, type: 3}
 --- !u!4 &36692658
 Transform:
   m_ObjectHideFlags: 0

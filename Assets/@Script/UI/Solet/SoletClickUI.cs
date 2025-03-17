@@ -42,8 +42,10 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
             solet.DesableSelectBg();
         }
         select.gameObject.SetActive(true);
+        if (myItemBase != null)
+            myItemBase.gameObject.SetActive(true);
 
-        if(myItemBase == null)
+        if (myItemBase == null)
         {
             player.itemAction = null;
             return;
@@ -54,6 +56,8 @@ public class SoletClickUI : UI_Base, IPointerClickHandler
     public void DesableSelectBg()
     {
         select.gameObject.SetActive(false);
+        if(myItemBase != null && myItemBase.GetType() != typeof(FlashLight))
+            myItemBase.gameObject.SetActive(false);
     }
 
 

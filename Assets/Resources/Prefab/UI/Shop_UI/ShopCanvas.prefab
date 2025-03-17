@@ -558,6 +558,9 @@ MonoBehaviour:
   - invenItem: 1
     items:
     - {fileID: 7773554599410484570, guid: e5a5c6d75c4b5fa4eb4c55f3a094ff3a, type: 3}
+  - invenItem: 8
+    items:
+    - {fileID: 1767233128453755730, guid: f5cb805aa6b0c654e85a7a356af4067d, type: 3}
 --- !u!1 &4973526648358863284
 GameObject:
   m_ObjectHideFlags: 0

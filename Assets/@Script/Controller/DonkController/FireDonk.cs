@@ -31,12 +31,11 @@ public class FireDonk : DonkController
         {
             case Dfine.State.Idle:
                 animator.Play("Idle");
-                Debug.Log("대기");
+       
                 break;
 
             case Dfine.State.Attack:
                 animator.Play("Fire_Incendiary_Start");
-                Debug.Log("공격");
                 break;
         }
     }
