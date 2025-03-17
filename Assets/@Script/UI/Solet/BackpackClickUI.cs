@@ -83,11 +83,14 @@ public class BackpackClickUI : SoletClickUI
         ItemNum--;
         Manager.Game.BackpackWeight -= myItemBase.itemData.itemWeight;
 
-        if(ItemNum <= 0)
+        if(ItemNum <= 0) 
             ResetBagpack();
         
     }
-
+    public override void DesableSelectBg()
+    {
+        select.gameObject.SetActive(false);
+    }
     public void ResetBagpack()
     {
         backCanvas.items.Remove(name);

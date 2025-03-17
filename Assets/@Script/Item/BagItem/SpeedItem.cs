@@ -8,14 +8,20 @@ public class SpeedItem : ItemBase
     public float speedTime;
     public override void ItemAblity()
     {
-        StartCoroutine(SpeedPlus());
+        if (player.speedCoroutine != null)
+        {
+            StopCoroutine(player.speedCoroutine);
+            player.Speed -= setSpeed;
+        }
+
+        player.speedCoroutine = StartCoroutine(SpeedPlus());
     }
 
     public IEnumerator SpeedPlus()
     {
-        Debug.Log("스피드 증가");
         player.Speed += setSpeed;
         yield return new WaitForSeconds(speedTime);
         player.Speed -= setSpeed;
+        player.speedCoroutine = null;
     }
 }

@@ -15,6 +15,17 @@ public class PlayerController : CreatureContoller
 
     public Transform itemHole;
     public Transform weaponHole;
+
+    public bool isRole;  //은신
+    public bool isGod; //무적
+
+    #region 아이템 코루틴
+    public Coroutine godCoroutine;
+    public Coroutine whiteCoroutine;
+    public Coroutine speedCoroutine;
+    public Coroutine damageCoroutine;
+
+    #endregion
     #region 산소 게이지
     private float _curBreath;
     public float CurrentBreath
@@ -78,6 +89,26 @@ public class PlayerController : CreatureContoller
         {
             SceneManager.LoadScene("MainScene");
         }
+    }
+
+    public override void Ondamage(CreatureContoller attker, float damage)
+    {
+        if (damageCool || isGod)
+            return;
+
+        damageCool = true;
+        CurrentHp -= damage;
+
+        //if(attker.GetType() == typeof(PlayerController))
+        //    transform.Find("HpCanvas").GetComponent<HpCanvas>().ChangeSlider(CurrentHp, Hp);
+
+        if (CurrentHp <= 0 && !isDie)
+        {
+            isDie = true;
+            OnDie();
+        }
+
+        StartCoroutine(waitCoolTime());
     }
     public override void Moving()
     {

@@ -112,7 +112,7 @@ public class CreatureContoller : BaseContoller
     {
         Debug.Log("³­ Á×¾ú´Ù");
     }
-    IEnumerator waitCoolTime()
+    protected IEnumerator waitCoolTime()
     {
         yield return new WaitForSeconds(atkCoolTime);
         damageCool = false;

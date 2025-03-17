@@ -72,7 +72,7 @@ public class MainStarter : MonoBehaviour
             shoper.transform.localPosition = shopPos;
         }
         //물약 생성
-        for(int i =0; i< 10; i++)
+        for(int i =0; i< 25; i++)
         {
             int rand = Random.Range(0, testItem.Length);
             GameObject potion = Instantiate(testItem[rand]);

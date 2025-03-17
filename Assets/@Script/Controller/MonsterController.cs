@@ -41,11 +41,32 @@ public class MonsterController : CreatureContoller
             state = Dfine.State.Attack;
             return;
         }
-        else
+        else if(!player.isRole)
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position - new Vector3(0, 1,0), Time.deltaTime * Speed);
      
     }
+    public override void UpdateMehod()
+    {
+        UseItem();
 
+        if (!player.isRole)
+            transform.eulerAngles = dir.x > 0 ? Vector3.zero : dir.x < 0 ? new Vector3(0, -180, 0) : transform.eulerAngles;
+
+        switch (state)
+        {
+            case Dfine.State.Idle:
+                Idle();
+                break;
+
+            case Dfine.State.Move:
+                Moving();
+                break;
+
+            case Dfine.State.Attack:
+                Attack();
+                break;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();

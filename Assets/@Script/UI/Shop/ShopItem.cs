@@ -103,7 +103,7 @@ public class ShopItem : UI_Base
                 GetText((int)Texts.UpgradeTxt).text = "¸¶Áö¸·";
 
             itemSp.sprite = items[upgradeCount].itemData.sprite;
-            itemName.text = items[upgradeCount].itemData.name;
+            itemName.text = items[upgradeCount].itemData.itemName;
             upgrdebars[upgradeCount].GetComponent<Image>().color = Color.green;
         }
 
