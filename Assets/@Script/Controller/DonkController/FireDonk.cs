@@ -44,7 +44,7 @@ public class FireDonk : DonkController
     {
         PlayerController player = collision.GetComponent<PlayerController>();
         if(player != null)
-            player.Ondamage(this, Damage);
+            player.PlayerDamage(this, Damage);
         
     }
 }

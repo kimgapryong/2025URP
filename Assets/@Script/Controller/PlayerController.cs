@@ -91,18 +91,22 @@ public class PlayerController : CreatureContoller
         }
     }
 
-    public override void Ondamage(CreatureContoller attker, float damage)
+    public  void PlayerDamage(CreatureContoller attker, float damage, Dfine.plaAtk atk = Dfine.plaAtk.Health)
     {
         if (damageCool || isGod)
             return;
 
         damageCool = true;
-        CurrentHp -= damage;
+
+        if(atk == Dfine.plaAtk.Health)
+            CurrentHp -= damage;
+        else if(atk == Dfine.plaAtk.Breath)
+            CurrentBreath -= damage;
 
         //if(attker.GetType() == typeof(PlayerController))
         //    transform.Find("HpCanvas").GetComponent<HpCanvas>().ChangeSlider(CurrentHp, Hp);
 
-        if (CurrentHp <= 0 && !isDie)
+        if (CurrentHp <= 0 || CurrentBreath <= 0 && !isDie)
         {
             isDie = true;
             OnDie();

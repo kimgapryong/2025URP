@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterController : CreatureContoller
 {
+    public Dfine.plaAtk plaAtk;
+
     public PlayerController player;
     private Rigidbody2D rigid;
     public bool isBack;
@@ -69,19 +71,19 @@ public class MonsterController : CreatureContoller
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
+        PlayerController cur = collision.gameObject.GetComponent<PlayerController>();
         if (cur != null && !damageCool)
         {
-            cur.Ondamage(this, Damage);
+            cur.PlayerDamage(this, Damage,plaAtk);
         }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
+        PlayerController cur = collision.gameObject.GetComponent<PlayerController>();
         if (cur != null && !damageCool)
         {
-            cur.Ondamage(this, Damage);
+            cur.PlayerDamage(this, Damage, plaAtk);
         }
     }
 

@@ -44,4 +44,10 @@ public class Dfine
         Normal,
         Legend
     }
+
+    public enum plaAtk
+    {
+        Breath,
+        Health
+    }
 }

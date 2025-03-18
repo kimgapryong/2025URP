@@ -44,7 +44,8 @@ public class Sword_Item : ItemBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CreatureContoller cur = collision.gameObject.GetComponent<MonsterController>();
+        CreatureContoller cur = collision.gameObject.GetComponent<CreatureContoller>();
+       
         if (cur != null)
             cur.Ondamage(player, itemData.damage);
     }

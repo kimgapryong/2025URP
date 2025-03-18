@@ -7,6 +7,8 @@ public class OnePiece : ItemBase
     public GameObject myOne;
     public override void Init()
     {
+        base.Init();
+
         if(gameObject.CompareTag("OnePiece"))
             myOne = transform.Find("OnePieceSprite").gameObject;
 

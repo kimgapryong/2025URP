@@ -13,6 +13,6 @@ public class TouchDonk : DonkController
     {
         PlayerController player = collision.GetComponent<PlayerController>();
         if (player != null)
-            player.Ondamage(this, damage);
+            player.PlayerDamage(this, damage);
     }
 }

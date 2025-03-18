@@ -52,6 +52,9 @@ public class ItemSellCanvas : UI_Base
     {
         foreach (var bag in Manager.Ui.backpackSolet)
         {
+            if (bag.myItemBase == null)
+                continue;
+
             totalMoney += bag.myItemBase.itemData.money * bag.ItemNum;
         }
         Manager.Game.Money += totalMoney; 

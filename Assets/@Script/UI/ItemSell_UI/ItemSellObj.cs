@@ -18,11 +18,14 @@ public class ItemSellObj : UI_Base
     }
     public void StartInit(BackpackClickUI myBag)
     {
-        this.myBag = myBag;
+      
         Bind<Image>(typeof(Images));
         Bind<Text>(typeof(Texts));
 
+        this.myBag = myBag;
+       
         data = myBag.myItemBase.itemData;
+
         GetImage((int)Images.ItemSprite).sprite = data.sprite;
         GetText((int)Texts.ItemName).text = $"{data.itemName} X{myBag.ItemNum}";
 
