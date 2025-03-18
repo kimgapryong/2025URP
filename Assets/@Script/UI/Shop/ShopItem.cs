@@ -112,13 +112,10 @@ public class ShopItem : UI_Base
 
         if(invenItem == Dfine.InvenItem.Bagpack)
         {
-            
-            if(Manager.Ui.Backpack != null)
-                Destroy(Manager.Ui.Backpack.gameObject);
-
             GetText((int)Texts.UpgradeTxt).text = "°­È­";
             Manager.Game.BackpackCount = (int)items[upgradeCount].damage;
             Manager.Game.MaxBackpackWeight = items[upgradeCount].itemWeight;
+
             Manager.Ui.InvenCanvas.ReBack();
             return;
         }

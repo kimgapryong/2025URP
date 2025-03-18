@@ -10,6 +10,7 @@ public class UIManager
     public InvenCanvas InvenCanvas { get; set; }
     public ShopCanvas Shop { get; set; }
     public MiniMapCanvas MiniMapCanvas { get; set; }
+    public ItemSellCanvas ItemSell { get; set; }
     
     public T CreateUI<T>(string path, Transform trans = null) where T : Component
     {

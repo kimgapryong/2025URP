@@ -12,7 +12,7 @@ public class ItemData : ScriptableObject
     public float atkTime;
     public float damage;
 
-    public float money;
+    public int money;
     public int itemWeight;
     public Sprite sprite;
 }

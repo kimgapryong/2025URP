@@ -70,13 +70,6 @@ public class BackpackClickUI : SoletClickUI
         if (myItemBase == null)
             return;
 
-        if (myItemBase.GetType() == typeof(OnePiece))
-        {
-            Manager.Ui.InvenCanvas.GetAllTxt("사용할 수 없는 아이템입니다");
-            return;
-        }
-
-
         myItemBase.ItemAblity();
 
         //아이템 사용 

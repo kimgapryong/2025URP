@@ -38,13 +38,12 @@ public class MainStarter : MonoBehaviour
         }
         else
         {
-            //Manager.Ui.backpackSolet.Clear();
-            //Manager.Ui.Backpack.items.Clear();
-            //foreach (var item in Manager.Instance.player.itemHole.GetComponentsInChildren<Transform>().Skip(1)) // 외워
-            //{
-            //    Destroy(item.gameObject);
-            //}
-            //Debug.Log("끝난라라");
+            foreach (var item in Manager.Instance.player.itemHole.GetComponentsInChildren<Transform>().Skip(1)) // 외워
+            {
+                Destroy(item.gameObject);
+            }
+
+          
         }
         Manager.Instance.player.transform.position = startPos;
         Manager.Instance.player.CurrentBreath = Manager.Instance.player.MaxBreath;
@@ -99,6 +98,18 @@ public class MainStarter : MonoBehaviour
             MiniMapCanvas mini = Manager.Ui.CreateUI<MiniMapCanvas>("MiniMapCanvas");
             Manager.Ui.MiniMapCanvas = mini;
             DontDestroyOnLoad(mini.gameObject);
+        }
+
+        //아이템 판매창 생성
+        if(Manager.Ui.ItemSell == null)
+        {
+            ItemSellCanvas sell = Manager.Ui.CreateUI<ItemSellCanvas>("ItemSellCanvas");
+            Manager.Ui.ItemSell = sell;
+            DontDestroyOnLoad(sell.gameObject);
+        }
+        else
+        {
+            Manager.Ui.ItemSell.SellItem();
         }
     }
 }

@@ -15,14 +15,13 @@ public class Item_Click : Click_Base
             {
                 if(item.itemData.itemManagerName == backClick.name)
                 {
-                    Debug.LogWarning("추가다 추가");
                     backClick.ItemNum++;
                     Manager.Game.BackpackWeight += item.itemData.itemWeight;
                     break;
                 }
                 else if (backClick.backCanvas.items.ContainsKey(item.name) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount && backClick.myItemBase == null)
                 {
-                    Debug.LogWarning("여기다 여기야");
+
                     backClick.myItemBase = item;
                     
                     backClick.ItemName = item.itemData.itemName;

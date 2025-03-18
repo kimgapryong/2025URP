@@ -15,6 +15,7 @@ public class OnePiece : ItemBase
     }
     public override void ItemAblity()
     {
-        Debug.Log("보물이다");
+        gameObject.transform.parent = null;
+        gameObject.transform.position = player.transform.position + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
     }
 }

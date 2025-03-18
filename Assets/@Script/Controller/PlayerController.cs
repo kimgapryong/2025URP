@@ -119,5 +119,7 @@ public class PlayerController : CreatureContoller
     {
         Speed = creatureData.speed;
         Damage = creatureData.damage;
+        isGod = false;
+        isRole = false;
     }
 }

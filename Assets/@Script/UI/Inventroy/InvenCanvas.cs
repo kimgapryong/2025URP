@@ -99,6 +99,8 @@ public class InvenCanvas : UI_Base
     {
         //매니저에서 관리하는 가방 칸수 초기화
         //Destroy(backpack.gameObject);
+        if (Manager.Ui.Backpack != null)
+            Destroy(Manager.Ui.Backpack.gameObject);
 
         Manager.Ui.backpackSolet.Clear();
         Manager.Game.CurrentBackCount = 0;
@@ -110,6 +112,7 @@ public class InvenCanvas : UI_Base
             Manager.Ui.Backpack.name = "BackpackCanvas";
             Manager.Ui.Backpack.gameObject.SetActive(false);
         }
+
         allTxt.transform.SetAsLastSibling(); //외워
         backObj.gameObject.BindingBtn(OpenOrCloseBag);
     }

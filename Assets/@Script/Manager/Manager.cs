@@ -56,5 +56,14 @@ public class Manager : MonoBehaviour
         RanomSpwan = player.GetComponent<RandomSpwanController>();
     }
 
+    public void DieClear()
+    {
+        Destroy(player.gameObject);
+        Destroy(Camera.main.gameObject);
+        Destroy(Ui.InvenCanvas.gameObject);
+        Destroy(Ui.Shop.gameObject);
+        Destroy(Ui.ItemSell.gameObject);
+        Destroy(gameObject);
+    }
 
 }
