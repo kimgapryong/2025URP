@@ -23,9 +23,11 @@ public class ItemSellObj : UI_Base
         Bind<Text>(typeof(Texts));
 
         this.myBag = myBag;
-       
-        data = myBag.myItemBase.itemData;
+        if (myBag.myItemBase.itemData == null)
+            return;
 
+        data = myBag.myItemBase.itemData;
+   
         GetImage((int)Images.ItemSprite).sprite = data.sprite;
         GetText((int)Texts.ItemName).text = $"{data.itemName} X{myBag.ItemNum}";
 

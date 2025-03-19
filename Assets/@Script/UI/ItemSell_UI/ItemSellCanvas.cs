@@ -42,6 +42,7 @@ public class ItemSellCanvas : UI_Base
     {
         foreach (var bag in Manager.Ui.backpackSolet)
         {
+            if (bag.myItemBase == null) continue;
             ItemSellObj items = Manager.Ui.CreateUI<ItemSellObj>("ItemSell_UI/ItemSellObj",itemSellsObj.transform);
             items.StartInit(bag);
             yield return new WaitForSeconds(1.2f);
