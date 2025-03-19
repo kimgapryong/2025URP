@@ -41,7 +41,7 @@ public class BackpackClickUI : SoletClickUI
             ChangeItemName(value);
         }
     }
-    public string name;
+    public string backName;
     public Text itemNumTxt;
     public Text itemNameTxt;
     public override bool Init()
@@ -86,8 +86,8 @@ public class BackpackClickUI : SoletClickUI
     }
     public void ResetBagpack()
     {
-        backCanvas.items.Remove(name);
-        name = null;
+        backCanvas.items.Remove(backName);
+        backName = null;
 
         myItemBase = null;
 
@@ -108,6 +108,6 @@ public class BackpackClickUI : SoletClickUI
     public void ChangeItemName(string name)
     {
         itemNameTxt.text = name;
-        Debug.Log(name);
+
     }
 }

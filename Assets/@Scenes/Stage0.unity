@@ -47399,7 +47399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b76b8df16641fa4fb78d35ff977286b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStageId: 0
+  currentStageId: 1
   door: {fileID: 988150648}
 --- !u!4 &853169869
 Transform:

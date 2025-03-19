@@ -25,6 +25,8 @@ public class ShopItem : UI_Base
 
     private int itemID;
     public Dfine.InvenItem invenItem;
+
+    int nextCount = 0;
     public int upgradeCount;
     int maxUpgrade;
 
@@ -76,6 +78,20 @@ public class ShopItem : UI_Base
     //업그레이드 버튼
     public void BuyOrUpgrade()
     {
+        
+        if (upgradeCount >= maxUpgrade)
+            return;
+
+        
+        if (nextCount + 1 < maxUpgrade)
+            nextCount++;
+
+        if (items[upgradeCount + 1].money > Manager.Game.Money)
+        {
+            Manager.Ui.InvenCanvas.GetAllTxt("돈이 부족합니다");
+            return;
+        }
+
         if (!isFirst)
         {
             isFirst = true;
@@ -88,14 +104,11 @@ public class ShopItem : UI_Base
                 {
                     so.shopItem = this;
                     mySolet = so;
-                    GetText((int)Texts.UpgradeTxt).text = "강화";
+                    GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
                     break;
                 }
             }
         }
-
-        if (upgradeCount >= maxUpgrade - 1)
-            return;
 
         upgradeCount++;
 
@@ -112,7 +125,7 @@ public class ShopItem : UI_Base
 
         if(invenItem == Dfine.InvenItem.Bagpack)
         {
-            GetText((int)Texts.UpgradeTxt).text = "강화";
+            GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
             Manager.Game.BackpackCount = (int)items[upgradeCount].damage;
             Manager.Game.MaxBackpackWeight = items[upgradeCount].itemWeight;
 
@@ -124,11 +137,12 @@ public class ShopItem : UI_Base
         {
             player.MaxBreath = items[upgradeCount].itemWeight;
             player.CurrentBreath = items[upgradeCount].itemWeight;
-            GetText((int)Texts.UpgradeTxt).text = "강화";
+            GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
             return;
         }
 
         Manager.Item.LoadPlayerItem(items[upgradeCount].itemManagerName, mySolet);
+        GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
 
         Debug.Log("업그레이드 완료");
     }

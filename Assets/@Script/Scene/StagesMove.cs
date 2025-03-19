@@ -12,11 +12,7 @@ public class StagesMove : MonoBehaviour
     {
         if (Vector3.Distance(Manager.Instance.player.transform.position, door.position) < 2f)
         {
-            if (Manager.Stage.CheckStage(currentStageId + 1))
-            {
-                SceneManager.LoadScene($"Stage{currentStageId + 1}");
-            }
+            SceneManager.LoadScene($"Stage{currentStageId}");
         }
-
     }
 }

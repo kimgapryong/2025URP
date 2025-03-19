@@ -29,7 +29,7 @@ public class ShopCanvas : UI_Base
         GetButton((int)Buttons.CloseBtn).gameObject.BindingBtn(CloseShop);
 
         Manager.Game.moneyAction = ChagneMoney;
-        Manager.Game.Money = 0;
+        Manager.Game.Money = 50000;
 
         for(int i = 0; i < itemDatas.Count; i++)
         {

@@ -211,7 +211,7 @@ MonoBehaviour:
   creatureData: {fileID: 0}
   animator: {fileID: 0}
   waitTime: 1.8
-  damage: 5
+  damage: 30
   coll: {fileID: 0}
 --- !u!61 &6680737921955244129
 BoxCollider2D:

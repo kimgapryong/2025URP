@@ -18,13 +18,10 @@ public class ItemSellObj : UI_Base
     }
     public void StartInit(BackpackClickUI myBag)
     {
-      
         Bind<Image>(typeof(Images));
         Bind<Text>(typeof(Texts));
 
         this.myBag = myBag;
-        if (myBag.myItemBase.itemData == null)
-            return;
 
         data = myBag.myItemBase.itemData;
    

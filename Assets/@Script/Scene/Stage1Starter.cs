@@ -9,6 +9,7 @@ public class Stage1Starter : Stage
     public override bool Init()
     {
         MyStage = Dfine.StageScene.Stage;
+        Debug.Log("½ÇÇó2");
         base.Init();
         Manager.Instance.player.transform.position = strPos;
         return true;

@@ -8,6 +8,8 @@ public class Stage : MonoBehaviour
     public float breathSpeed;
     public bool isFrist;
 
+    public int myStageID;   
+    public GameObject door;
     public GameObject onePiece;
     public Dfine.StageScene MyStage { get; set; }
     private void Start()
@@ -35,6 +37,11 @@ public class Stage : MonoBehaviour
             }
 
             Manager.Instance.player.PlayerClear();
+            if (Manager.Stage.CheckTrager(myStageID))
+                Destroy(onePiece);
+
+            if (Manager.Stage.CheckStage(myStageID))
+                Destroy(door);
             return true;
         }
         return false;

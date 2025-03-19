@@ -36,15 +36,6 @@ public class MainStarter : MonoBehaviour
             pa.transform.position = startPos;
             DontDestroyOnLoad(pa);
         }
-        else
-        {
-            foreach (var item in Manager.Instance.player.itemHole.GetComponentsInChildren<Transform>().Skip(1)) // ¿Ü¿ö
-            {
-                Destroy(item.gameObject);
-            }
-
-          
-        }
         Manager.Instance.player.transform.position = startPos;
         Manager.Instance.player.CurrentBreath = Manager.Instance.player.MaxBreath;
         Manager.Instance.player.CurrentHp = Manager.Instance.player.Hp;
@@ -111,5 +102,6 @@ public class MainStarter : MonoBehaviour
         {
             Manager.Ui.ItemSell.SellItem();
         }
+
     }
 }

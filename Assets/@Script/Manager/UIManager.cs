@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager
 {
     public HashSet<SoletClickUI> soletClickUIs = new HashSet<SoletClickUI>();
-    public HashSet<BackpackClickUI> backpackSolet = new HashSet<BackpackClickUI>();
+    public List<BackpackClickUI> backpackSolet = new List<BackpackClickUI>();
     public BackpackCanvas Backpack { get; set; } = null;
     public InvenCanvas InvenCanvas { get; set; }
     public ShopCanvas Shop { get; set; }
@@ -15,7 +15,6 @@ public class UIManager
     public T CreateUI<T>(string path, Transform trans = null) where T : Component
     {
         GameObject canvas = Manager.Resources.Load<GameObject>($"UI/{path}");
-        Debug.Log(canvas);
         GameObject clone = Object.Instantiate(canvas);
         clone.name = canvas.name;
         clone.transform.parent = trans; 

@@ -16,5 +16,6 @@ MonoBehaviour:
   itemName: "\uB300\uD615 \uAC00\uBC29"
   atkTime: 0
   damage: 6
+  money: 500
   itemWeight: 450
   sprite: {fileID: 21300000, guid: e9b36b9e47f1f49468dc8b9c2a18927d, type: 3}

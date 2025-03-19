@@ -12,7 +12,7 @@ public class DoorController : BaseContoller
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if (player != null)
         {
-            Time.timeScale = 0;
+            player.enabled = false;
             QuizCanvas quizCanvas = Manager.Ui.CreateUI<QuizCanvas>("QuizCanvas");
             quizCanvas.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
             quizCanvas.myDoor = gameObject;

@@ -24,6 +24,7 @@ public class FixMonsterController : CreatureContoller
         state = Dfine.State.Move;
 
         targetPos = transform.position + dirs[curDir] * moveDis;
+        dir = dirs[curDir];
         curDir++;
         return true;
     }
@@ -37,6 +38,7 @@ public class FixMonsterController : CreatureContoller
                 curDir = 0;
 
             targetPos = transform.position + dirs[curDir] * moveDis;
+            dir = dirs[curDir];
             curDir++;
         }
 

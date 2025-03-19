@@ -69,9 +69,12 @@ public class QuizCanvas : UI_Base
     {
         if(quizAnimal == string.Concat(resultQuiz) && !isOk)
         {
+            
             isOk = true;
-            Time.timeScale = 1.0f;
             Manager.Ui.InvenCanvas.GetAllTxt("퍼즐을 풀었습니다 문이 열립니다");
+            Manager.Stage.OkStage();
+            player.enabled = true;
+
             Destroy(myDoor);
             Destroy(gameObject);
         }

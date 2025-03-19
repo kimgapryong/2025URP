@@ -13,19 +13,18 @@ public class Item_Click : Click_Base
         {
             foreach (BackpackClickUI backClick in Manager.Ui.backpackSolet)
             {
-                if(item.itemData.itemManagerName == backClick.name)
+                if(item.itemData.itemManagerName == backClick.backName)
                 {
                     backClick.ItemNum++;
                     Manager.Game.BackpackWeight += item.itemData.itemWeight;
                     break;
                 }
-                else if (backClick.backCanvas.items.ContainsKey(item.name) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount && backClick.myItemBase == null)
+                else if (backClick.backCanvas.items.ContainsKey(item.itemData.itemManagerName) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount && backClick.myItemBase == null)
                 {
-
                     backClick.myItemBase = item;
                     
                     backClick.ItemName = item.itemData.itemName;
-                    backClick.name = item.itemData.itemManagerName;
+                    backClick.backName = item.itemData.itemManagerName;
                     backClick.ItemNum++;
 
                     backClick.SetBgSp(item.itemData.sprite);
@@ -40,12 +39,7 @@ public class Item_Click : Click_Base
                 }
                 else
                 {
-                    if(backClick.backCanvas.items.TryGetValue(item.name, out ItemBase items))
-                    {
-                        Debug.Log(items);
-                    }
                     //TODO가방 공간이 부족 한걸 표현
-
                 }
 
             }

@@ -42,7 +42,9 @@ public class ItemSellCanvas : UI_Base
     {
         foreach (var bag in Manager.Ui.backpackSolet)
         {
-            if (bag.myItemBase == null) continue;
+            if(bag.myItemBase == null)  
+                yield break;
+
             ItemSellObj items = Manager.Ui.CreateUI<ItemSellObj>("ItemSell_UI/ItemSellObj",itemSellsObj.transform);
             items.StartInit(bag);
             yield return new WaitForSeconds(1.2f);
@@ -57,6 +59,8 @@ public class ItemSellCanvas : UI_Base
                 continue;
 
             totalMoney += bag.myItemBase.itemData.money * bag.ItemNum;
+            if (bag.myItemBase.gameObject.CompareTag("OnePiece"))
+                Manager.Stage.OkTrager();
         }
         Manager.Game.Money += totalMoney; 
         totalMoney = 0; 
@@ -68,6 +72,10 @@ public class ItemSellCanvas : UI_Base
 
         Manager.Ui.Backpack.items.Clear();
         Manager.Ui.InvenCanvas.ReBack();
+        foreach (var item in Manager.Instance.player.itemHole.GetComponentsInChildren<Transform>().Skip(1)) // ¿Ü¿ö
+        {
+            Destroy(item.gameObject);
+        }
         gameObject.SetActive(false);
     }
 }
