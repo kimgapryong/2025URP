@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Snake
   m_EditorClassIdentifier: 
   hp: 50
-  speed: 16
+  speed: 8
   damage: 15
   arange: 0
   atkArange: 0

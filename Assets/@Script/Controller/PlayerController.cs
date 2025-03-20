@@ -89,6 +89,10 @@ public class PlayerController : CreatureContoller
         {
             SceneManager.LoadScene("Stage0");
         }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene("Stage4");
+        }
     }
 
     public  void PlayerDamage(CreatureContoller attker, float damage, Dfine.plaAtk atk = Dfine.plaAtk.Health)

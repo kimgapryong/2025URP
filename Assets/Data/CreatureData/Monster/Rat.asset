@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rat
   m_EditorClassIdentifier: 
   hp: 20
-  speed: 14
+  speed: 9
   damage: 10
   arange: 0
   atkArange: 0

@@ -71,11 +71,19 @@ public class QuizCanvas : UI_Base
         {
             
             isOk = true;
+            GameObject[] objs = GameObject.FindGameObjectsWithTag("Door");
             Manager.Ui.InvenCanvas.GetAllTxt("퍼즐을 풀었습니다 문이 열립니다");
             Manager.Stage.OkStage();
             player.enabled = true;
 
-            Destroy(myDoor);
+            for(int i = 0; i < objs.Length; i++)
+            {
+                Destroy(objs[i]);
+            }
+
+            if(myDoor != null) 
+                Destroy(myDoor);
+
             Destroy(gameObject);
         }
     }

@@ -40,8 +40,14 @@ public class Stage : MonoBehaviour
             if (Manager.Stage.CheckTrager(myStageID))
                 Destroy(onePiece);
 
+
             if (Manager.Stage.CheckStage(myStageID))
-                Destroy(door);
+            {
+                GameObject[] objs = GameObject.FindGameObjectsWithTag("Door");
+                for (int i = 0; i < objs.Length; i++)
+                    Destroy(objs[i]);
+            }   
+               
             return true;
         }
         return false;

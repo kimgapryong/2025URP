@@ -11,24 +11,24 @@ public static class Utils
     public static T GetOrAddComponent<T>(this GameObject go) where T : Component
     {
         T component = go.GetComponent<T>();
-        if(component == null)
+        if (component == null)
             component = go.AddComponent<T>();
         return component;
     }
 
     public static T FindChild<T>(this GameObject obj, string name) where T : UnityEngine.Object
     {
-        if(typeof(T) == typeof(GameObject))
+        if (typeof(T) == typeof(GameObject))
         {
-            foreach(Transform com in obj.GetComponentsInChildren<Transform>())
+            foreach (Transform com in obj.GetComponentsInChildren<Transform>())
             {
-                if(com.gameObject.name == name)
+                if (com.gameObject.name == name)
                     return com.gameObject as T;
             }
         }
-        foreach(T com in obj.GetComponentsInChildren<T>())
+        foreach (T com in obj.GetComponentsInChildren<T>())
         {
-            if(com.name == name)
+            if (com.name == name)
 
                 return com;
         }
@@ -39,7 +39,7 @@ public static class Utils
     public static List<T> FindAllChild<T>(this GameObject obj) where T : Component
     {
         List<T> list = new List<T>();
-        foreach(T com in obj.GetComponentsInChildren<T>())
+        foreach (T com in obj.GetComponentsInChildren<T>())
         {
             list.Add(com);
         }
@@ -61,4 +61,6 @@ public static class Utils
         preatical.speed = speed;
         preatical.atker = creature;
     }
+
+  
 }
