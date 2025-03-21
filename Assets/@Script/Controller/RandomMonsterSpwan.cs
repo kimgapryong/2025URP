@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RandomMonsterSpwan : MonoBehaviour
 {
-
+    public Stage4Starter stage;
     public Vector3[] dirs = new Vector3[8]
     {
         Vector3.up,
@@ -23,7 +23,7 @@ public class RandomMonsterSpwan : MonoBehaviour
     public float minvecY = 41;
     public float maxvecY = 70;
 
-    public int maxMonster = 40;
+    public int maxMonster = 110;
     public int curMonster;
 
     public int monsterCount; //몬스터 얼마나 생설할지 예 1000마리
@@ -52,8 +52,8 @@ public class RandomMonsterSpwan : MonoBehaviour
                 float randY = Random.Range(minvecY, maxvecY);
                 curDis = new Vector3(randX, randY);
 
-                if(curCreate > 21)
-                    curCreate = 21;
+                if(curCreate > maxMonster)
+                    curCreate = maxMonster;
 
                 for (int i = 0; i < curCreate; i++)
                 {
@@ -76,6 +76,7 @@ public class RandomMonsterSpwan : MonoBehaviour
                 yield return null;
             }
         }
-       
+        //삭제
+        stage.DelGameObj();
     }
 }

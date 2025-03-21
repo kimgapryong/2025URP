@@ -36,6 +36,10 @@ public class Stage : MonoBehaviour
                 item.SetOnePiece(onePiece);
             }
 
+            GameObject cheat = GameObject.Find("CheatAngine");
+            if(cheat != null)
+                cheat.GetComponent<CheatAngine>().curID = myStageID;
+
             Manager.Instance.player.PlayerClear();
             if (Manager.Stage.CheckTrager(myStageID))
                 Destroy(onePiece);

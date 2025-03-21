@@ -10,7 +10,11 @@ public class ResourcesManager
 
         return obj;
     }
-
+    public AudioClip LoadAudio(string path)
+    {
+        AudioClip audio = Resources.Load<AudioClip>($"Sounds/{path}");
+        return audio;
+    }
     public GameObject Instantiate(string name, Transform trans = null)
     {
         GameObject obj = Load<GameObject>(name);

@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10caa9b2c3dee2b44a8d9666bb0b70b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 469659070}
   dirs:
   - {x: 0, y: 1, z: 0}
   - {x: -1, y: 0, z: 0}
@@ -165,9 +166,9 @@ MonoBehaviour:
   maxvecX: 110
   minvecY: 41
   maxvecY: 70
-  maxMonster: 40
+  maxMonster: 125
   curMonster: 0
-  monsterCount: 1000
+  monsterCount: 450
   spawnTime: 4
   monsters:
   - {fileID: 1017365441026476120, guid: 0ae30c1bd8c23da40a4373cafdb8a7ef, type: 3}
@@ -352,7 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFrist: 0
-  sprite: {fileID: 21300000, guid: 4f47e4bed1025f14992ff3092068fb38, type: 3}
+  sprite: {fileID: 21300000, guid: ebb3c71201d417b4586436bd57f75a40, type: 3}
   animalString: ELEPHANT
   sizeCell: 70
 --- !u!61 &425503873
@@ -1443,7 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d819b4d8811ee4883270b420ad624b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breathSpeed: 0
+  breathSpeed: 3
   isFrist: 0
   myStageID: 4
   door: {fileID: 425503871}
@@ -1583,7 +1584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b76b8df16641fa4fb78d35ff977286b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStageId: 3
+  currentStageId: 5
   door: {fileID: 762720063}
 --- !u!212 &762720062
 SpriteRenderer:

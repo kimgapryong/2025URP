@@ -12,6 +12,7 @@ public class PlayerController : CreatureContoller
     public Action currentClickAction; //현재 아이템
     public Action itemClickAction; //아이템 클릭
     public Action<float, float> breathAction; //플레이어 산소 게이지
+    public float maxSpeed;
 
     public Transform itemHole;
     public Transform weaponHole;
@@ -50,6 +51,7 @@ public class PlayerController : CreatureContoller
         base.Init();
 
         state = Dfine.State.Move;
+        maxSpeed = Speed;
         CurrentBreath = MaxBreath;
         itemHole = transform.Find("ItemHole");
         weaponHole = transform.Find("WeponHole");
@@ -93,6 +95,10 @@ public class PlayerController : CreatureContoller
         {
             SceneManager.LoadScene("Stage4");
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene("Stage5");
+        }
     }
 
     public  void PlayerDamage(CreatureContoller attker, float damage, Dfine.plaAtk atk = Dfine.plaAtk.Health)
@@ -102,6 +108,7 @@ public class PlayerController : CreatureContoller
 
         damageCool = true;
 
+        Manager.Game.Score--;
         if(atk == Dfine.plaAtk.Health)
             CurrentHp -= damage;
         else if(atk == Dfine.plaAtk.Breath)

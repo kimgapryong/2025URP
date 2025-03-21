@@ -15,5 +15,7 @@ MonoBehaviour:
   itemManagerName: Sword1
   itemName: "\uAE30\uBCF8 \uCE7C"
   atkTime: 0.3
-  damage: 10
+  damage: 500
+  money: 0
+  itemWeight: 0
   sprite: {fileID: -267587109, guid: 6eb16e372762d6b4cb708c44ebfab931, type: 3}

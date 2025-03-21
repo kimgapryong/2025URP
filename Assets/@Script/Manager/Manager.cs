@@ -22,13 +22,20 @@ public class Manager : MonoBehaviour
     private GameManager _game = new GameManager();
     public static GameManager Game { get { return Instance._game; } }
 
+    private RankingManager _rank = new RankingManager();
+    public static RankingManager Rank { get { return Instance._rank; } }
+
     public PlayerController player { get; private set; }
+    public AudioSource audioSource { get; private set; }
     public RandomSpwanController RanomSpwan {  get; private set; }
+
+
 
     private void Awake()
     {
         Init();
     }
+    
 
     public static void Init()
     {
@@ -53,6 +60,7 @@ public class Manager : MonoBehaviour
             return;
         }
         player = pa;
+        audioSource = player.GetComponent<AudioSource>();
         RanomSpwan = player.GetComponent<RandomSpwanController>();
     }
 
@@ -63,7 +71,7 @@ public class Manager : MonoBehaviour
         Destroy(Ui.InvenCanvas.gameObject);
         Destroy(Ui.Shop.gameObject);
         Destroy(Ui.ItemSell.gameObject);
-        Destroy(gameObject);
+        Destroy(Ui.MiniMapCanvas.gameObject);
     }
 
 }

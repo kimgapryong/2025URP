@@ -12,6 +12,9 @@ public class StagesMove : MonoBehaviour
     {
         if (Vector3.Distance(Manager.Instance.player.transform.position, door.position) < 2f)
         {
+            if(currentStageId == 6)
+                Manager.Instance.DieClear();
+
             SceneManager.LoadScene($"Stage{currentStageId}");
         }
     }

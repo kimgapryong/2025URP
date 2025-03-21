@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Sword_Item : ItemBase
 {
@@ -14,6 +15,8 @@ public class Sword_Item : ItemBase
         base.Init();
         coll = GetComponent<Collider2D>();
         coll.enabled = false;
+
+        itemAudio = Manager.Resources.LoadAudio("PlayerHit2");
     }
     public override void ItemAblity()
     {
@@ -29,6 +32,8 @@ public class Sword_Item : ItemBase
 
     public IEnumerator WaitTime()
     {
+        Manager.Instance.audioSource.PlayOneShot(itemAudio);
+
         isWait = true;
         coll.enabled = true;
         State = Dfine.ItemState.Play;

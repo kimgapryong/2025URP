@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Eve_HeartController : FixMonsterController
 {
+    public int myCurID;
+    public float speed;
     public override bool Init()
     {
         base.Init();
-        if(Manager.Stage.CheckStage(2))
+        Speed = speed;
+        if(Manager.Stage.CheckStage(myCurID))
             Destroy(gameObject);
         return true;
     }

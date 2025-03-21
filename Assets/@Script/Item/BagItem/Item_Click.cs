@@ -15,6 +15,7 @@ public class Item_Click : Click_Base
             {
                 if(item.itemData.itemManagerName == backClick.backName)
                 {
+                    Debug.Log("dhodkdss");
                     backClick.ItemNum++;
                     Manager.Game.BackpackWeight += item.itemData.itemWeight;
                     break;
@@ -37,12 +38,13 @@ public class Item_Click : Click_Base
                     backClick.backCanvas.items.Add(item.itemData.itemManagerName, item);
                     break;
                 }
-                else
+                else if (Manager.Game.CurrentBackCount >= Manager.Game.BackpackCount)
                 {
-                    //TODO가방 공간이 부족 한걸 표현
+                    Manager.Ui.InvenCanvas.GetAllTxt("가방 공간이 가득 찼습니다");
+                    return;
                 }
-
             }
+            Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("ItemGetSound"));
             player.currentClickAction = null;
             myParent.transform.SetParent(Manager.Instance.player.itemHole);
             myParent.transform.position = new Vector3(500, 500);

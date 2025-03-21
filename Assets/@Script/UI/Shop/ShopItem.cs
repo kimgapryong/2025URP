@@ -86,7 +86,7 @@ public class ShopItem : UI_Base
         if (nextCount + 1 < maxUpgrade)
             nextCount++;
 
-        if (items[upgradeCount + 1].money > Manager.Game.Money)
+        if (items[upgradeCount + 1].money > Manager.Game.Money && !Manager.Game.CanShop)
         {
             Manager.Ui.InvenCanvas.GetAllTxt("돈이 부족합니다");
             return;

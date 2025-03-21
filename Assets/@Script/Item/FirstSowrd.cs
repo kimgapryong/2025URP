@@ -24,3 +24,4 @@ public class FirstSowrd : Sword_Item
         }
     }
 }
+
