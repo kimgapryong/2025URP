@@ -5,13 +5,18 @@ using UnityEngine;
 public class FireDonk : DonkController
 {
     public Collider2D coll;
-
+    private AudioSource audioSource;
+    private AudioClip fireClip;
     public override bool Init()
     {
         coll = GetComponent<Collider2D>();
         coll.enabled = false;
         animator = GetComponent<Animator>();
 
+        audioSource = transform.parent.GetComponent<AudioSource>();
+        fireClip = Manager.Resources.LoadAudio("FireDonk");
+
+        audioSource.clip = fireClip;
         base.Init();
         return true;
     }
@@ -23,6 +28,7 @@ public class FireDonk : DonkController
     public void ReturnIdle()
     {
         state = Dfine.State.Idle;
+        audioSource.Stop();
         coll.enabled = false;
     }
     public override void ChangeAnim(Dfine.State state)
@@ -35,6 +41,7 @@ public class FireDonk : DonkController
                 break;
 
             case Dfine.State.Attack:
+                audioSource.Play();
                 animator.Play("Fire_Incendiary_Start");
                 break;
         }

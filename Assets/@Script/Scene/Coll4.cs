@@ -7,6 +7,8 @@ public class Coll4 : MonoBehaviour
     public Stage4Starter stage;
     public RandomMonsterSpwan randMon;
     public GameObject heartMon;
+    public AudioSource audioSo;
+    public AudioClip audioClip;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController player = collision.GetComponent<PlayerController>();
@@ -15,6 +17,12 @@ public class Coll4 : MonoBehaviour
             if(heartMon != null) 
                 Destroy(heartMon);
 
+            if(audioSo != null)
+            {
+                audioSo.clip = audioClip;
+                audioSo.Play();
+            }
+              
             stage.SetBossMonster();
 
             StartCoroutine(randMon.MonsterRandomSpwan());

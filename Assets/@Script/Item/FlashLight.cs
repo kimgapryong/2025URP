@@ -8,6 +8,7 @@ public class FlashLight : ItemBase
     public override void ItemAblity()
     {
         Debug.Log("플래시 능력");
+        Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("LightSwitch"));
         if (isEquer)
         {
             isEquer = false;

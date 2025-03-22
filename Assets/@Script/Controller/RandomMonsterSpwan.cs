@@ -7,6 +7,8 @@ using UnityEngine;
 public class RandomMonsterSpwan : MonoBehaviour
 {
     public Stage4Starter stage;
+    public AudioSource audioSo;
+    public AudioClip audioClip;
     public Vector3[] dirs = new Vector3[8]
     {
         Vector3.up,
@@ -77,6 +79,13 @@ public class RandomMonsterSpwan : MonoBehaviour
             }
         }
         //ªË¡¶
+        if(audioSo != null)
+        {
+            audioSo.clip = audioClip;
+            audioSo.Play();
+        }
+
         stage.DelGameObj();
+
     }
 }

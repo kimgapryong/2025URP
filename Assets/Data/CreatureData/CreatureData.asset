@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbad3305f643a9646ae5869610a4a83d, type: 3}
   m_Name: CreatureData
   m_EditorClassIdentifier: 
-  hp: 400
-  speed: 30
+  hp: 200
+  speed: 9
   damage: 0
   arange: 0
   atkArange: 0

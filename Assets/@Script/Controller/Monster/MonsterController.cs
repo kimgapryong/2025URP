@@ -90,6 +90,7 @@ public class MonsterController : CreatureContoller
     public override void Ondamage(CreatureContoller attker, float damage)
     {
         BackMonster();
+        Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("MonsterHit"));
         base.Ondamage(attker, damage);
     }
     public override void OnDie()

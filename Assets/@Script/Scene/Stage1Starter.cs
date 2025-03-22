@@ -13,6 +13,5 @@ public class Stage1Starter : Stage
         Manager.Instance.player.transform.position = strPos;
         return true;
     }
-    
-    
+
 }

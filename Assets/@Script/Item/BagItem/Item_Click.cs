@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Item_Click : Click_Base
 {
+    public bool backNotFull;
     public override void ClickAction()
     {
         //가방에 빈 공간으로 보내기
@@ -18,6 +19,8 @@ public class Item_Click : Click_Base
                     Debug.Log("dhodkdss");
                     backClick.ItemNum++;
                     Manager.Game.BackpackWeight += item.itemData.itemWeight;
+
+                    backNotFull = true;
                     break;
                 }
                 else if (backClick.backCanvas.items.ContainsKey(item.itemData.itemManagerName) == false && Manager.Game.CurrentBackCount < Manager.Game.BackpackCount && backClick.myItemBase == null)
@@ -38,16 +41,21 @@ public class Item_Click : Click_Base
                     backClick.backCanvas.items.Add(item.itemData.itemManagerName, item);
                     break;
                 }
-                else if (Manager.Game.CurrentBackCount >= Manager.Game.BackpackCount)
-                {
-                    Manager.Ui.InvenCanvas.GetAllTxt("가방 공간이 가득 찼습니다");
-                    return;
-                }
+              
             }
+
+            if (Manager.Game.CurrentBackCount >= Manager.Game.BackpackCount && !backNotFull)
+            {
+                Manager.Ui.InvenCanvas.GetAllTxt("가방 공간이 가득 찼습니다");
+                return;
+            }
+
             Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("ItemGetSound"));
             player.currentClickAction = null;
             myParent.transform.SetParent(Manager.Instance.player.itemHole);
             myParent.transform.position = new Vector3(500, 500);
+
+            backNotFull = false;
         }
 
     }

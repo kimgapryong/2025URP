@@ -88,6 +88,7 @@ public class ShopItem : UI_Base
 
         if (items[upgradeCount + 1].money > Manager.Game.Money && !Manager.Game.CanShop)
         {
+            Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("ItemNotBuy"));
             Manager.Ui.InvenCanvas.GetAllTxt("돈이 부족합니다");
             return;
         }
@@ -128,7 +129,8 @@ public class ShopItem : UI_Base
             GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
             Manager.Game.BackpackCount = (int)items[upgradeCount].damage;
             Manager.Game.MaxBackpackWeight = items[upgradeCount].itemWeight;
-
+            Manager.Game.Money -= items[upgradeCount].money;
+            Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("ItemBuy"));
             Manager.Ui.InvenCanvas.ReBack();
             return;
         }
@@ -137,14 +139,19 @@ public class ShopItem : UI_Base
         {
             player.MaxBreath = items[upgradeCount].itemWeight;
             player.CurrentBreath = items[upgradeCount].itemWeight;
+            Manager.Game.Money -= items[upgradeCount].money;
             GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
+
+
+            Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("ItemBuy"));
             return;
         }
 
         Manager.Item.LoadPlayerItem(items[upgradeCount].itemManagerName, mySolet);
+        Manager.Game.Money -= items[upgradeCount].money;
         GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
 
-        Debug.Log("업그레이드 완료");
+        Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("ItemBuy"));
     }
 
 }

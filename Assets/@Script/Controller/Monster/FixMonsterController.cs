@@ -84,7 +84,11 @@ public class FixMonsterController : CreatureContoller
             cur.PlayerDamage(this, Damage, plaAtk);
         }
     }
-
+    public override void Ondamage(CreatureContoller attker, float damage)
+    {
+        Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("MonsterHit"));
+        base.Ondamage(attker, damage);
+    }
     public override void OnDie()
     {
         Manager.Instance.RanomSpwan.RandomItemSpwan(transform.position);

@@ -73,11 +73,16 @@ public class QuizCanvas : UI_Base
             isOk = true;
             GameObject[] objs = GameObject.FindGameObjectsWithTag("Door");
             Manager.Ui.InvenCanvas.GetAllTxt("퍼즐을 풀었습니다 문이 열립니다");
+            Manager.Instance.audioSource.PlayOneShot(Manager.Resources.LoadAudio("/ShootingSound/magic_03"));
+           
+
             Manager.Stage.OkStage();
             player.enabled = true;
 
             for(int i = 0; i < objs.Length; i++)
             {
+                GameObject clone = Manager.Resources.Instantiate("Particel/DoorDelete");
+                clone.transform.position = objs[i].transform.position;
                 Destroy(objs[i]);
             }
 

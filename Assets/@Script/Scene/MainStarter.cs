@@ -48,9 +48,8 @@ public class MainStarter : MonoBehaviour
             DontDestroyOnLoad (inventory.gameObject);
         }
         //카메라 생성
-        if (Camera.main.GetComponent<CameraController>() == null) // 기존 메인 카메라 확인
+        if (Camera.main == null) // 기존 메인 카메라 확인
         {
-            Destroy(Camera.main.gameObject);
             GameObject mainCam = Instantiate(cam);
             mainCam.name = cam.name;
             mainCam.transform.position = new Vector3(0, 0, -10);
