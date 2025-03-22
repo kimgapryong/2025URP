@@ -10,6 +10,7 @@ public class StagesMove : MonoBehaviour
 
     private void Update()
     {
+        if(Manager.Instance != null)
         if (Vector3.Distance(Manager.Instance.player.transform.position, door.position) < 2f)
         {
             if(currentStageId == 6)

@@ -32,7 +32,7 @@ public class CheatAngine : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F4))
         {
-            if (curID + 1 < 6)
+            if (curID + 1 <= 6)
                 SceneManager.LoadScene($"Stage{curID + 1}");
         }
         if (Input.GetKeyDown(KeyCode.F5))

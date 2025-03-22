@@ -125,6 +125,11 @@ public class PlayerController : CreatureContoller
 
         StartCoroutine(waitCoolTime());
     }
+
+    public override void OnDie()
+    {
+        Manager.Instance.DieClear();
+    }
     public override void Moving()
     {
         transform.position += dir * Speed * Time.deltaTime;
@@ -136,5 +141,11 @@ public class PlayerController : CreatureContoller
         Damage = creatureData.damage;
         isGod = false;
         isRole = false;
+    }
+
+    private void OnDestroy()
+    {
+        Manager.Instance.DieClear();
+        DestroyImmediate(Manager.Instance.gameObject);
     }
 }

@@ -40,7 +40,6 @@ public class Manager : MonoBehaviour
     public static void Init()
     {
         if (_instance != null) return;
-
         GameObject go = GameObject.Find("@Manager");
         if (go == null)
         {
