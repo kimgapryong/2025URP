@@ -104,6 +104,7 @@ public class ShopItem : UI_Base
                 if (so.shopItem == null)
                 {
                     so.shopItem = this;
+                    Debug.Log(so);
                     mySolet = so;
                     GetText((int)Texts.UpgradeTxt).text = items[nextCount].money.ToString();
                     break;

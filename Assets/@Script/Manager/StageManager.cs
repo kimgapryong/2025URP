@@ -61,4 +61,18 @@ public class StageManager
             }
         }
     }
+
+    public void Clear()
+    {
+        for(int i =0; i < TragerCrew.stages.Length; i++)
+        {
+            TragerCrew.stages[i] = false;
+        }
+
+        for (int i = 0; i < Stages.stages.Length; i++)
+        {
+            Stages.stages[i] = false;
+        }
+        Stages.stages[0] = true;
+    }
 }

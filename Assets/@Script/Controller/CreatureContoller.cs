@@ -65,6 +65,7 @@ public class CreatureContoller : BaseContoller
 
         Damage = creatureData.damage;
         Speed = creatureData.speed;
+        Debug.Log(Speed);
 
         return true;
     }

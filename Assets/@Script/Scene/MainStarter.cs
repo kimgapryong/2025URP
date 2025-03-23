@@ -20,7 +20,7 @@ public class MainStarter : MonoBehaviour
 
     private void Start()
     {
-        
+        CheatAngine.instance.curID = 0;
         InitStart();
     }
 
@@ -90,7 +90,13 @@ public class MainStarter : MonoBehaviour
             Manager.Ui.MiniMapCanvas = mini;
             DontDestroyOnLoad(mini.gameObject);
         }
-
+        //죽는 거 캔바스 생성
+        if(Manager.Ui.Die == null)
+        {
+            DieCanvas die = Manager.Ui.CreateUI<DieCanvas>("DieCanvas");
+            Manager.Ui.Die = die;
+            DontDestroyOnLoad(die.gameObject);
+        }
         //아이템 판매창 생성
         if(Manager.Ui.ItemSell == null)
         {

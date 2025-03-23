@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager
 {
-    public Action<int> backpackWeightAction;
+    public Action<int,int> backpackWeightAction;
     public Action<int> moneyAction;
 
 
@@ -27,7 +27,7 @@ public class GameManager
         set
         {
             _backWeigth = value;
-            backpackWeightAction?.Invoke(value);
+            backpackWeightAction?.Invoke(value, MaxBackpackWeight);
         }
     }
 

@@ -6,32 +6,33 @@ using UnityEngine.UI;
 public class BackpackCanvas : UI_Base
 {
     public GameObject bg_Back;
-    public Text weight_txt;
+
     public Dictionary<string, ItemBase> items = new Dictionary<string, ItemBase>();
-    public float plaCurSpeed;
+
     
     enum Objects
     {
         BackpackSort,
         Bg_Back,
     }
-    enum Texts
+    enum Buttons
     {
-        Weight_Txt,
+        DelBtn,
     }
 
     public override bool Init()
     {
         base.Init();
         Bind<GameObject>(typeof(Objects));
-        Bind<Text>(typeof(Texts));
+        Bind<Button>(typeof(Buttons));
+
+        GetButton((int)Buttons.DelBtn).gameObject.BindingBtn(() => gameObject.SetActive(false));
         bg_Back = GetObject((int)Objects.BackpackSort);
         bg_Back.SetActive(true);
 
-        weight_txt = GetText((int)Texts.Weight_Txt);
-        Manager.Game.backpackWeightAction = ChangeWeight; //함수 등록
+
+        //Manager.Game.backpackWeightAction = ChangeWeight; //함수 등록
         Manager.Game.BackpackWeight = 0;                                                         
-        plaCurSpeed = player.Speed;
 
         for(int i = 0; i < Manager.Game.BackpackCount; i++)
         {
@@ -42,24 +43,4 @@ public class BackpackCanvas : UI_Base
         return true;
     }
 
-    #region 가방 무게 관련 함수
-
-    public void ChangeWeight(int weight)
-    {
-        if(weight > Manager.Game.MaxBackpackWeight )
-        {
-            Manager.Ui.InvenCanvas.GetAllTxt("가방이 너무 무겁습니다");
-            Debug.Log(player.Speed);
-            player.Speed -= (float)(weight - Manager.Game.MaxBackpackWeight) / 5;
-            Debug.Log(player.Speed);
-        }
-        else
-        {
-            player.Speed = player.maxSpeed;
-        }
-
-        weight_txt.text = $"무게: {weight} / {Manager.Game.MaxBackpackWeight}";
-    }
-
-    #endregion
 }

@@ -71,6 +71,8 @@ public class Manager : MonoBehaviour
         Destroy(Ui.Shop.gameObject);
         Destroy(Ui.ItemSell.gameObject);
         Destroy(Ui.MiniMapCanvas.gameObject);
+        Destroy(GameObject.Find("CheatAngine"));
+        Stage.Clear();
     }
 
 }

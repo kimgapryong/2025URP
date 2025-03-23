@@ -11,6 +11,7 @@ public class UIManager
     public ShopCanvas Shop { get; set; }
     public MiniMapCanvas MiniMapCanvas { get; set; }
     public ItemSellCanvas ItemSell { get; set; }
+    public DieCanvas Die { get; set; }
     
     public T CreateUI<T>(string path, Transform trans = null) where T : Component
     {

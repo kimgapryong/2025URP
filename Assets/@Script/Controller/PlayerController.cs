@@ -11,7 +11,10 @@ public class PlayerController : CreatureContoller
 {
     public Action currentClickAction; //현재 아이템
     public Action itemClickAction; //아이템 클릭
+
+   
     public Action<float, float> breathAction; //플레이어 산소 게이지
+
     public float maxSpeed;
 
     public Transform itemHole;
@@ -51,8 +54,12 @@ public class PlayerController : CreatureContoller
         base.Init();
 
         state = Dfine.State.Move;
+
+        Manager.Game.BackpackWeight = 0;
+        Debug.Log(Speed);
         maxSpeed = Speed;
         CurrentBreath = MaxBreath;
+
         itemHole = transform.Find("ItemHole");
         weaponHole = transform.Find("WeponHole");
         return true;
@@ -128,7 +135,8 @@ public class PlayerController : CreatureContoller
 
     public override void OnDie()
     {
-        Manager.Instance.DieClear();
+        Manager.Ui.Die.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
     public override void Moving()
     {
@@ -143,9 +151,4 @@ public class PlayerController : CreatureContoller
         isRole = false;
     }
 
-    private void OnDestroy()
-    {
-        Manager.Instance.DieClear();
-        DestroyImmediate(Manager.Instance.gameObject);
-    }
 }

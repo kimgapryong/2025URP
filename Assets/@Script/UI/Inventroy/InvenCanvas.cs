@@ -10,24 +10,32 @@ public class InvenCanvas : UI_Base
         InvenBackground,
         BackImage,
         Bg_Back,
+        Hp_Slider,
+        Breath_Slider,
+        Weight_Slider,
     }
     enum Objects
     {
         InvenBackground,
     }
-    enum Sliders
-    {
-        Hp_Slider,
-        Breath_Slider,
-    }
+   
     enum Texts
     {
         AllText,
+        Hp_Txt,
+        Br_Txt,
+        Weight_Txt,
     }
 
     public GameObject backObj;
-    Slider hpSlider;
-    Slider brSlider;
+    public Image hp_S;
+    public Image br_S;
+    public Image weight_S;
+
+    Text hp_T;
+    Text br_T;
+    Text we_T;
+
     Text allTxt;
     Coroutine _cor;
 
@@ -38,25 +46,28 @@ public class InvenCanvas : UI_Base
 
         Bind<Image>(typeof(Images));
         Bind<GameObject>(typeof(Objects));
-        Bind<Slider>(typeof(Sliders));
         Bind<Text>(typeof(Texts));
 
-        hpSlider = GetSlider((int)Sliders.Hp_Slider);
-        brSlider = GetSlider((int)Sliders.Breath_Slider);
+        hp_S = GetImage((int)Images.Hp_Slider);
+        br_S = GetImage((int)Images.Breath_Slider);
+        weight_S = GetImage((int)Images.Weight_Slider);
+        //text
         allTxt = GetText((int)Texts.AllText);
+        hp_T = GetText((int)Texts.Hp_Txt);
+        br_T = GetText((int)Texts.Br_Txt);
+        we_T = GetText((int)Texts.Weight_Txt);
+
+
         allTxt.gameObject.SetActive(false);
 
+        //Action
         player.hpAction = Hp_UI;
         player.breathAction = Breath_UI;
+        Manager.Game.backpackWeightAction = Weight_UI;
 
         backObj = GetImage((int)Images.BackImage).gameObject;
 
         //ReBack(); // 처음 가방 설정
-
-       
-
-        
-
         for (int i = 0; i < maxPanelCount; i++)
         {
             Manager.Ui.soletClickUIs.Add(Manager.Ui.CreateUI<SoletClickUI>("Bg_panel", GetObject((int)Objects.InvenBackground).transform));
@@ -72,13 +83,40 @@ public class InvenCanvas : UI_Base
     public void Hp_UI(float cur, float max)
     {
         float sliderValue = Mathf.Max(cur, 0);
-        hpSlider.value = sliderValue / max;
+        hp_T.text = $"{cur}/{max}";
+        hp_S.fillAmount = sliderValue / max;
     }
 
     public void Breath_UI(float cur, float max)
     {
         float sliderValue = Mathf.Max(cur, 0);
-        brSlider.value = sliderValue / max;
+        br_T.text = $"{cur}/{max}";
+        br_S.fillAmount = sliderValue / max;
+    }
+    public void Weight_UI(int cur, int max)
+    {
+        if ((float)cur / max >= 0.9)
+        {
+            Manager.Ui.InvenCanvas.GetAllTxt("가방이 너무 무겁습니다");
+            weight_S.color = Color.red;
+            player.Speed = player.maxSpeed * 0.5f;
+        }
+        else if((float)cur / max >= 0.7)
+        {
+            Manager.Ui.InvenCanvas.GetAllTxt("가방이 너무 무겁습니다");
+            weight_S.color = new Color(1f, 0.5f, 0f, 1f);
+            player.Speed = player.maxSpeed * 0.8f;
+        }
+        else
+        {
+            weight_S.color = Color.yellow;
+            if(player.maxSpeed > 0f)
+                player.Speed = player.maxSpeed;
+        }
+
+        float sliderValue = Mathf.Max(cur, 0);
+        we_T.text = $"{cur} / {max}";
+        weight_S.fillAmount = sliderValue / max;
     }
     #endregion
 

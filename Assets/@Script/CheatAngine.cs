@@ -7,9 +7,20 @@ using UnityEngine.SceneManagement;
 public class CheatAngine : MonoBehaviour
 {
     public int curID;
-
-    private void Start()
+    public static CheatAngine instance;
+    private void Awake()
     {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }
+        GameObject cheat = GameObject.Find("CheatAngine");
+        if(cheat == null)
+        {
+            cheat = new GameObject("CheatAngine");
+            cheat.AddComponent<CheatAngine>(); 
+        }
+        instance = cheat.GetComponent<CheatAngine>();
         DontDestroyOnLoad(gameObject);
     }
     private void Update()

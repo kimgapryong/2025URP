@@ -27,6 +27,10 @@ public class QuizCanvas : UI_Base
     {
         Set1txt, Set2txt, Set3txt,
     }
+    enum Buttons
+    {
+        DelBtn,
+    }
     enum Objects
     {
         Alphvet,
@@ -37,9 +41,10 @@ public class QuizCanvas : UI_Base
         Bind<GameObject>(typeof(Objects));
         Bind<Image>(typeof(Images));
         Bind<Text>(typeof(Texts));
+        Bind<Button>(typeof(Buttons));
 
         GetImage((int)Images.AnimalImage).sprite = animalSprite;
-
+        GetButton((int)Buttons.DelBtn).gameObject.BindingBtn(() => { gameObject.SetActive(false); player.enabled = true; });
 
         resultQuiz = new char[quizAnimal.Length];
         setAlphabets = new SetAlphabert[quizAnimal.Length];
